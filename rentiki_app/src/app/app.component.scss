@@ -1,0 +1,16 @@
+ion-item {
+    position: relative;
+    z-index: 1;
+    width: 20em;
+    height: 3.5em;
+    
+    &::after {
+        content: '';
+        position: absolute;
+        left: 1em;
+        bottom: 0;        
+        height: 1px;
+        width: 85%;
+        border-bottom: 1px solid var(--ion-color-primary);
+    }
+}
