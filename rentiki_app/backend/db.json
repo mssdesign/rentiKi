@@ -6,13 +6,21 @@
             "houses": [
                 {
                     "contract": "venda",
-                    "name": "Casa no Por do Sol",
+                    "title": "Casa no Por do Sol",
+                    "description": "Um lugar bonito e feliz!",
                     "price": "200000",
                     "contact": [
                         "3565-2879",
                         "99854-2200"
                     ],
-                    "address": "SHPS Q302 CA L2",
+                    "location": [
+                        {
+                            "address": "4VQQ+7W Samambaia, Brasilia - Federal District, Brazil",
+                            "lat": "-15.8618146",
+                            "lng": "-48.1101395",
+                            "staticMapImageUrl": "https://maps.googleapis.com/maps/api/staticmap?center=-15.8618146,-48.1101395&zoom=14&size=500x300&maptype=roadmap&markers=color:red%7Clabel:Place%7C-15.8618146,-48.1101395&key=AIzaSyB8_wq43hAPeb3-uMtT6-zO-hXgZFD25QM"
+                        }
+                    ],
                     "images": [
                         "https://imagens-revista.vivadecora.com.br/uploads/2021/03/1-decora%C3%A7%C3%A3o-moderna-para-quarto-feminino-pequeno-cinza-com-m%C3%B3veis-planejados-Foto-Sua-Decora%C3%A7%C3%A3o.jpg",
                         "https://www.italinea.com.br/antigo/wp-content/uploads/2019/12/face_2801-internas_3.png",
@@ -22,13 +30,21 @@
                 },
                 {
                     "contract": "aluguel",
-                    "name": "Casa no Por do Sol",
+                    "title": "Casa no Por do Sol",
+                    "description": "Um lugar bonito e feliz!",
                     "price": "200000",
                     "contact": [
                         "3565-2879",
                         "99854-2200"
                     ],
-                    "address": "SHPS Q302 CA L2",
+                    "location": [
+                        {
+                            "address": "4VQQ+7W Samambaia, Brasilia - Federal District, Brazil",
+                            "lat": "-15.8618146",
+                            "lng": "-48.1101395",
+                            "staticMapImageUrl": "https://maps.googleapis.com/maps/api/staticmap?center=-15.8618146,-48.1101395&zoom=14&size=500x300&maptype=roadmap&markers=color:red%7Clabel:Place%7C-15.8618146,-48.1101395&key=AIzaSyB8_wq43hAPeb3-uMtT6-zO-hXgZFD25QM"
+                        }
+                    ],
                     "images": [
                         "https://imagens-revista.vivadecora.com.br/uploads/2021/03/1-decora%C3%A7%C3%A3o-moderna-para-quarto-feminino-pequeno-cinza-com-m%C3%B3veis-planejados-Foto-Sua-Decora%C3%A7%C3%A3o.jpg",
                         "https://www.italinea.com.br/antigo/wp-content/uploads/2019/12/face_2801-internas_3.png",
@@ -46,13 +62,21 @@
             "houses": [
                 {
                     "contract": "venda",
-                    "name": "Casa no Por do Sol",
+                    "title": "Casa no Por do Sol",
+                    "description": "Um lugar bonito e feliz!",
                     "price": "200000",
                     "contact": [
                         "3565-2879",
                         "99854-2200"
                     ],
-                    "address": "SHPS Q302 CA L2",
+                    "location": [
+                        {
+                            "address": "4VQQ+7W Samambaia, Brasilia - Federal District, Brazil",
+                            "lat": "-15.8618146",
+                            "lng": "-48.1101395",
+                            "staticMapImageUrl": "https://maps.googleapis.com/maps/api/staticmap?center=-15.8618146,-48.1101395&zoom=14&size=500x300&maptype=roadmap&markers=color:red%7Clabel:Place%7C-15.8618146,-48.1101395&key=AIzaSyB8_wq43hAPeb3-uMtT6-zO-hXgZFD25QM"
+                        }
+                    ],
                     "images": [
                         "https://imagens-revista.vivadecora.com.br/uploads/2021/03/1-decora%C3%A7%C3%A3o-moderna-para-quarto-feminino-pequeno-cinza-com-m%C3%B3veis-planejados-Foto-Sua-Decora%C3%A7%C3%A3o.jpg",
                         "https://www.italinea.com.br/antigo/wp-content/uploads/2019/12/face_2801-internas_3.png",
@@ -70,13 +94,21 @@
             "houses": [
                 {
                     "contract": "aluguel",
-                    "name": "Casa no Por do Sol",
-                    "price": "800",
+                    "title": "Casa no Por do Sol",
+                    "description": "Um lugar bonito e feliz!",
+                    "price": "200000",
                     "contact": [
                         "3565-2879",
                         "99854-2200"
                     ],
-                    "address": "SHPS Q302 CA L2",
+                    "location": [
+                        {
+                            "address": "4VQQ+7W Samambaia, Brasilia - Federal District, Brazil",
+                            "lat": "-15.8618146",
+                            "lng": "-48.1101395",
+                            "staticMapImageUrl": "https://maps.googleapis.com/maps/api/staticmap?center=-15.8618146,-48.1101395&zoom=14&size=500x300&maptype=roadmap&markers=color:red%7Clabel:Place%7C-15.8618146,-48.1101395&key=AIzaSyB8_wq43hAPeb3-uMtT6-zO-hXgZFD25QM"
+                        }
+                    ],
                     "images": [
                         "https://imagens-revista.vivadecora.com.br/uploads/2021/03/1-decora%C3%A7%C3%A3o-moderna-para-quarto-feminino-pequeno-cinza-com-m%C3%B3veis-planejados-Foto-Sua-Decora%C3%A7%C3%A3o.jpg",
                         "https://www.italinea.com.br/antigo/wp-content/uploads/2019/12/face_2801-internas_3.png",
@@ -94,13 +126,21 @@
             "houses": [
                 {
                     "contract": "venda",
-                    "name": "Casa no Por do Sol",
-                    "price": "150000",
+                    "title": "Casa no Por do Sol",
+                    "description": "Um lugar bonito e feliz!",
+                    "price": "200000",
                     "contact": [
                         "3565-2879",
                         "99854-2200"
                     ],
-                    "address": "SHPS Q302 CA L2",
+                    "location": [
+                        {
+                            "address": "4VQQ+7W Samambaia, Brasilia - Federal District, Brazil",
+                            "lat": "-15.8618146",
+                            "lng": "-48.1101395",
+                            "staticMapImageUrl": "https://maps.googleapis.com/maps/api/staticmap?center=-15.8618146,-48.1101395&zoom=14&size=500x300&maptype=roadmap&markers=color:red%7Clabel:Place%7C-15.8618146,-48.1101395&key=AIzaSyB8_wq43hAPeb3-uMtT6-zO-hXgZFD25QM"
+                        }
+                    ],
                     "images": [
                         "https://imagens-revista.vivadecora.com.br/uploads/2021/03/1-decora%C3%A7%C3%A3o-moderna-para-quarto-feminino-pequeno-cinza-com-m%C3%B3veis-planejados-Foto-Sua-Decora%C3%A7%C3%A3o.jpg",
                         "https://www.italinea.com.br/antigo/wp-content/uploads/2019/12/face_2801-internas_3.png",

@@ -1,3 +1,4 @@
+import { HousesService } from './houses.service';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -7,9 +8,24 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HousesPage implements OnInit {
 
-  constructor() {}
+  houses!: any;
+
+  constructor(private housesService: HousesService) {}
 
   ngOnInit() {
+    // this.housesService.fetchHouses().subscribe(houses => {
+    //   this.houses = houses
+    //   console.log(houses)
+    //   return houses
+    // })
+  }
+
+  onfetchHouses() {
+    this.housesService.fetchHouses().subscribe(houses => {
+      this.houses = houses
+      console.log(houses)
+      return houses
+    })
   }
 
   //Fazer fetch no backend e trazer os dados
