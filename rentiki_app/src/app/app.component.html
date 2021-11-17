@@ -3,6 +3,7 @@
     <ion-header>
       <ion-toolbar color="primary">
         <ion-title>Nome do usuário</ion-title>
+        <ion-icon name="arrow-undo-outline" slot="end" class="close_menu" (click)="closeMenu()"></ion-icon>
       </ion-toolbar>
     </ion-header>
 
@@ -22,8 +23,11 @@
             <ion-label>Sair</ion-label>
           </ion-item>
         </ion-list>
+        
       </ion-menu-toggle>      
     </ion-content>
+
+    <ion-label class="water-mark">mssDesign</ion-label>
   </ion-menu>
 
   <ion-router-outlet main></ion-router-outlet>

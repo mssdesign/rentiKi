@@ -9,4 +9,8 @@ import { MenuController } from '@ionic/angular';
 export class AppComponent {
   constructor(private menuCtrl: MenuController) {}
 
+  closeMenu() {
+    this.menuCtrl.close();
+  }
+
 }
