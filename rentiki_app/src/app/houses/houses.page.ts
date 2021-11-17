@@ -12,4 +12,6 @@ export class HousesPage implements OnInit {
   ngOnInit() {
   }
 
+  //Fazer fetch no backend e trazer os dados
+
 }

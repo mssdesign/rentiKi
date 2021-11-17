@@ -1,4 +1,4 @@
-ion-item {
+ion-item {  //Itens do menu
     position: relative;
     z-index: 1;
     width: 100%;
@@ -14,14 +14,19 @@ ion-item {
         width: 89%;
         border-bottom: 1px solid var(--ion-color-primary);
     }
+    
 }
 
-.close_menu {
+.item-final:after { //Último item menu
+    border-bottom: 1px solid #fff;
+}
+
+.close_menu {   //Botão de fechar menu
     transform: translate(-50%, 10%);
     font-size: 1.5em;
 }
 
-.water-mark {
+.water-mark {   //mssDesign
     color: var(--ion-color-medium-shade);
     margin-bottom: 5%;
     font-family: 'Times New Roman', Times, serif;

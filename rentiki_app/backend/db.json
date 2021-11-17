@@ -1,0 +1,114 @@
+{
+    "users": [
+        {
+            "userId": "u1",
+            "name": "João Silvestre",
+            "houses": [
+                {
+                    "contract": "venda",
+                    "name": "Casa no Por do Sol",
+                    "price": "200000",
+                    "contact": [
+                        "3565-2879",
+                        "99854-2200"
+                    ],
+                    "address": "SHPS Q302 CA L2",
+                    "images": [
+                        "https://imagens-revista.vivadecora.com.br/uploads/2021/03/1-decora%C3%A7%C3%A3o-moderna-para-quarto-feminino-pequeno-cinza-com-m%C3%B3veis-planejados-Foto-Sua-Decora%C3%A7%C3%A3o.jpg",
+                        "https://www.italinea.com.br/antigo/wp-content/uploads/2019/12/face_2801-internas_3.png",
+                        "https://revistanews.com.br/wp-content/uploads/2018/08/quarto-infantil.jpg",
+                        "https://www.plantapronta.com.br/projetos/154/21.jpg"
+                    ]
+                },
+                {
+                    "contract": "aluguel",
+                    "name": "Casa no Por do Sol",
+                    "price": "200000",
+                    "contact": [
+                        "3565-2879",
+                        "99854-2200"
+                    ],
+                    "address": "SHPS Q302 CA L2",
+                    "images": [
+                        "https://imagens-revista.vivadecora.com.br/uploads/2021/03/1-decora%C3%A7%C3%A3o-moderna-para-quarto-feminino-pequeno-cinza-com-m%C3%B3veis-planejados-Foto-Sua-Decora%C3%A7%C3%A3o.jpg",
+                        "https://www.italinea.com.br/antigo/wp-content/uploads/2019/12/face_2801-internas_3.png",
+                        "https://revistanews.com.br/wp-content/uploads/2018/08/quarto-infantil.jpg",
+                        "https://www.plantapronta.com.br/projetos/154/21.jpg"
+                    ]
+                }
+            ]
+        },
+
+
+        {
+            "userId": "u2",
+            "name": "Pedro Samuel",
+            "houses": [
+                {
+                    "contract": "venda",
+                    "name": "Casa no Por do Sol",
+                    "price": "200000",
+                    "contact": [
+                        "3565-2879",
+                        "99854-2200"
+                    ],
+                    "address": "SHPS Q302 CA L2",
+                    "images": [
+                        "https://imagens-revista.vivadecora.com.br/uploads/2021/03/1-decora%C3%A7%C3%A3o-moderna-para-quarto-feminino-pequeno-cinza-com-m%C3%B3veis-planejados-Foto-Sua-Decora%C3%A7%C3%A3o.jpg",
+                        "https://www.italinea.com.br/antigo/wp-content/uploads/2019/12/face_2801-internas_3.png",
+                        "https://revistanews.com.br/wp-content/uploads/2018/08/quarto-infantil.jpg",
+                        "https://www.plantapronta.com.br/projetos/154/21.jpg"
+                    ]
+                }
+            ]
+        },
+
+
+        {
+            "userId": "u3",
+            "name": "Antonia Soares",
+            "houses": [
+                {
+                    "contract": "aluguel",
+                    "name": "Casa no Por do Sol",
+                    "price": "800",
+                    "contact": [
+                        "3565-2879",
+                        "99854-2200"
+                    ],
+                    "address": "SHPS Q302 CA L2",
+                    "images": [
+                        "https://imagens-revista.vivadecora.com.br/uploads/2021/03/1-decora%C3%A7%C3%A3o-moderna-para-quarto-feminino-pequeno-cinza-com-m%C3%B3veis-planejados-Foto-Sua-Decora%C3%A7%C3%A3o.jpg",
+                        "https://www.italinea.com.br/antigo/wp-content/uploads/2019/12/face_2801-internas_3.png",
+                        "https://revistanews.com.br/wp-content/uploads/2018/08/quarto-infantil.jpg",
+                        "https://www.plantapronta.com.br/projetos/154/21.jpg"
+                    ]
+                }
+            ]
+        },
+
+
+        {
+            "userId": "u4",
+            "name": "Carlos Normando",
+            "houses": [
+                {
+                    "contract": "venda",
+                    "name": "Casa no Por do Sol",
+                    "price": "150000",
+                    "contact": [
+                        "3565-2879",
+                        "99854-2200"
+                    ],
+                    "address": "SHPS Q302 CA L2",
+                    "images": [
+                        "https://imagens-revista.vivadecora.com.br/uploads/2021/03/1-decora%C3%A7%C3%A3o-moderna-para-quarto-feminino-pequeno-cinza-com-m%C3%B3veis-planejados-Foto-Sua-Decora%C3%A7%C3%A3o.jpg",
+                        "https://www.italinea.com.br/antigo/wp-content/uploads/2019/12/face_2801-internas_3.png",
+                        "https://revistanews.com.br/wp-content/uploads/2018/08/quarto-infantil.jpg",
+                        "https://www.plantapronta.com.br/projetos/154/21.jpg"
+                    ]
+                }
+            ]
+        }
+    ]
+}
