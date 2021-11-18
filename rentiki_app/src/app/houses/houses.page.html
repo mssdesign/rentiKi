@@ -8,15 +8,13 @@
 </ion-header>
 
 <ion-content>
-  <ion-card>
-    <ion-card-header>
+  <ion-segment value="all">
+    <ion-segment-button value="all">Todos</ion-segment-button>
+    <ion-segment-button value="rent">Alugar</ion-segment-button>
+    <ion-segment-button value="sell">Vender</ion-segment-button>
+  </ion-segment>
 
-      <ion-card-title>Título do anúncio</ion-card-title>
+  <ion-grid *ngIf="!isLoading">
 
-      
-
-      <ion-label>Descrição do anúncio</ion-label>
-
-    </ion-card-header>
-  </ion-card>
+  </ion-grid>
 </ion-content>

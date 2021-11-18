@@ -27,3 +27,7 @@
 
 /* Importando variáveis do ionic para todo o projeto */
 @import "./theme/variables.scss";
+
+/* Swiping cards style */
+@import '~swiper/scss';
+@import '~@ionic/angular/css/ionic-swiper';
