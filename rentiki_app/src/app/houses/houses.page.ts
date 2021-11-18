@@ -14,7 +14,7 @@ export class HousesPage implements OnInit, OnDestroy {
   housesLoaded: userModel[];
   test: any[];
   data: any;
-  housesRent: HouseModel[];
+  housesRent: any;//HouseModel[];
   housesSell: HouseModel[];
   private housesSub: Subscription;
 
@@ -24,7 +24,7 @@ export class HousesPage implements OnInit, OnDestroy {
     this.housesSub = this.housesService.houses.subscribe(houses => {
       this.housesLoaded = houses;
     })
-    this.housesService.filterRent();
+    
   }
 
   ionViewWillEnter() {
@@ -32,6 +32,22 @@ export class HousesPage implements OnInit, OnDestroy {
     this.housesService.fetchHouses().subscribe(() => {
       this.isLoading = false;
     })
+
+    this.filterRent();
+    //console.log(this.housesLoaded)
+  }
+
+  filterRent() {
+    if (this.housesLoaded) {
+      this.housesRent = this.housesLoaded.filter(userModel => {
+        for (let i in userModel['houses']) {
+          if (userModel['houses'][i]['contract'] === 'venda') {
+            return true;
+          }
+        }        
+      })
+    }
+    console.log(this.housesRent)    
   }
 
   ngOnDestroy() {

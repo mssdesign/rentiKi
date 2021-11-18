@@ -41,10 +41,6 @@ export class HousesService {
     );
   }
 
-  filterRent() {
-    console.log(this.houses)
-  }
-
   //   console.log(`Peguei o contrato: ${this.data}`)
   // }
 

@@ -1,153 +1,133 @@
 {
-    "users": [
+    "offers": [
         {
             "userId": "u1",
-            "name": "João Silvestre",
-            "houses": [
+            "name": "Julia Cardoso",
+            "contract": "venda",
+            "title": "Casa no Por do Sol",
+            "description": "Um lugar bonito e feliz!",
+            "price": "200000",
+            "contact": [
+                "3565-2879",
+                "99854-2200"
+            ],
+            "location": [
                 {
-                    "contract": "venda",
-                    "title": "Casa no Por do Sol",
-                    "description": "Um lugar bonito e feliz!",
-                    "price": "200000",
-                    "contact": [
-                        "3565-2879",
-                        "99854-2200"
-                    ],
-                    "location": [
-                        {
-                            "address": "4VQQ+7W Samambaia, Brasilia - Federal District, Brazil",
-                            "lat": "-15.8618146",
-                            "lng": "-48.1101395",
-                            "staticMapImageUrl": "https://maps.googleapis.com/maps/api/staticmap?center=-15.8618146,-48.1101395&zoom=14&size=500x300&maptype=roadmap&markers=color:red%7Clabel:Place%7C-15.8618146,-48.1101395&key=AIzaSyB8_wq43hAPeb3-uMtT6-zO-hXgZFD25QM"
-                        }
-                    ],
-                    "images": [
-                        "https://imagens-revista.vivadecora.com.br/uploads/2021/03/1-decora%C3%A7%C3%A3o-moderna-para-quarto-feminino-pequeno-cinza-com-m%C3%B3veis-planejados-Foto-Sua-Decora%C3%A7%C3%A3o.jpg",
-                        "https://www.italinea.com.br/antigo/wp-content/uploads/2019/12/face_2801-internas_3.png",
-                        "https://revistanews.com.br/wp-content/uploads/2018/08/quarto-infantil.jpg",
-                        "https://www.plantapronta.com.br/projetos/154/21.jpg"
-                    ]
-                },
-                {
-                    "contract": "aluguel",
-                    "title": "Casa no Por do Sol",
-                    "description": "Um lugar bonito e feliz!",
-                    "price": "200000",
-                    "contact": [
-                        "3565-2879",
-                        "99854-2200"
-                    ],
-                    "location": [
-                        {
-                            "address": "4VQQ+7W Samambaia, Brasilia - Federal District, Brazil",
-                            "lat": "-15.8618146",
-                            "lng": "-48.1101395",
-                            "staticMapImageUrl": "https://maps.googleapis.com/maps/api/staticmap?center=-15.8618146,-48.1101395&zoom=14&size=500x300&maptype=roadmap&markers=color:red%7Clabel:Place%7C-15.8618146,-48.1101395&key=AIzaSyB8_wq43hAPeb3-uMtT6-zO-hXgZFD25QM"
-                        }
-                    ],
-                    "images": [
-                        "https://imagens-revista.vivadecora.com.br/uploads/2021/03/1-decora%C3%A7%C3%A3o-moderna-para-quarto-feminino-pequeno-cinza-com-m%C3%B3veis-planejados-Foto-Sua-Decora%C3%A7%C3%A3o.jpg",
-                        "https://www.italinea.com.br/antigo/wp-content/uploads/2019/12/face_2801-internas_3.png",
-                        "https://revistanews.com.br/wp-content/uploads/2018/08/quarto-infantil.jpg",
-                        "https://www.plantapronta.com.br/projetos/154/21.jpg"
-                    ]
+                    "address": "4VQQ+7W Samambaia, Brasilia - Federal District, Brazil",
+                    "lat": "-15.8618146",
+                    "lng": "-48.1101395",
+                    "staticMapImageUrl": "https://maps.googleapis.com/maps/api/staticmap?center=-15.8618146,-48.1101395&zoom=14&size=500x300&maptype=roadmap&markers=color:red%7Clabel:Place%7C-15.8618146,-48.1101395&key=AIzaSyB8_wq43hAPeb3-uMtT6-zO-hXgZFD25QM"
                 }
+            ],
+            "images": [
+                "https://imagens-revista.vivadecora.com.br/uploads/2021/03/1-decora%C3%A7%C3%A3o-moderna-para-quarto-feminino-pequeno-cinza-com-m%C3%B3veis-planejados-Foto-Sua-Decora%C3%A7%C3%A3o.jpg",
+                "https://www.italinea.com.br/antigo/wp-content/uploads/2019/12/face_2801-internas_3.png",
+                "https://revistanews.com.br/wp-content/uploads/2018/08/quarto-infantil.jpg",
+                "https://www.plantapronta.com.br/projetos/154/21.jpg"
             ]
         },
-
-
         {
             "userId": "u2",
-            "name": "Pedro Samuel",
-            "houses": [
+            "name": "Normando Tarquinio",
+            "contract": "aluguel",
+            "title": "Casa no Por do Sol",
+            "description": "Um lugar bonito e feliz!",
+            "price": "1250",
+            "contact": [
+                "3565-2879",
+                "99854-2200"
+            ],
+            "location": [
                 {
-                    "contract": "venda",
-                    "title": "Casa no Por do Sol",
-                    "description": "Um lugar bonito e feliz!",
-                    "price": "200000",
-                    "contact": [
-                        "3565-2879",
-                        "99854-2200"
-                    ],
-                    "location": [
-                        {
-                            "address": "4VQQ+7W Samambaia, Brasilia - Federal District, Brazil",
-                            "lat": "-15.8618146",
-                            "lng": "-48.1101395",
-                            "staticMapImageUrl": "https://maps.googleapis.com/maps/api/staticmap?center=-15.8618146,-48.1101395&zoom=14&size=500x300&maptype=roadmap&markers=color:red%7Clabel:Place%7C-15.8618146,-48.1101395&key=AIzaSyB8_wq43hAPeb3-uMtT6-zO-hXgZFD25QM"
-                        }
-                    ],
-                    "images": [
-                        "https://imagens-revista.vivadecora.com.br/uploads/2021/03/1-decora%C3%A7%C3%A3o-moderna-para-quarto-feminino-pequeno-cinza-com-m%C3%B3veis-planejados-Foto-Sua-Decora%C3%A7%C3%A3o.jpg",
-                        "https://www.italinea.com.br/antigo/wp-content/uploads/2019/12/face_2801-internas_3.png",
-                        "https://revistanews.com.br/wp-content/uploads/2018/08/quarto-infantil.jpg",
-                        "https://www.plantapronta.com.br/projetos/154/21.jpg"
-                    ]
+                    "address": "4VQQ+7W Samambaia, Brasilia - Federal District, Brazil",
+                    "lat": "-15.8618146",
+                    "lng": "-48.1101395",
+                    "staticMapImageUrl": "https://maps.googleapis.com/maps/api/staticmap?center=-15.8618146,-48.1101395&zoom=14&size=500x300&maptype=roadmap&markers=color:red%7Clabel:Place%7C-15.8618146,-48.1101395&key=AIzaSyB8_wq43hAPeb3-uMtT6-zO-hXgZFD25QM"
                 }
+            ],
+            "images": [
+                "https://imagens-revista.vivadecora.com.br/uploads/2021/03/1-decora%C3%A7%C3%A3o-moderna-para-quarto-feminino-pequeno-cinza-com-m%C3%B3veis-planejados-Foto-Sua-Decora%C3%A7%C3%A3o.jpg",
+                "https://www.italinea.com.br/antigo/wp-content/uploads/2019/12/face_2801-internas_3.png",
+                "https://revistanews.com.br/wp-content/uploads/2018/08/quarto-infantil.jpg",
+                "https://www.plantapronta.com.br/projetos/154/21.jpg"
             ]
         },
-
-
         {
             "userId": "u3",
-            "name": "Antonia Soares",
-            "houses": [
+            "name": "João Silvestre",
+            "contract": "venda",
+            "title": "Casa no Por do Sol",
+            "description": "Um lugar bonito e feliz!",
+            "price": "180000",
+            "contact": [
+                "3565-2879",
+                "99854-2200"
+            ],
+            "location": [
                 {
-                    "contract": "aluguel",
-                    "title": "Casa no Por do Sol",
-                    "description": "Um lugar bonito e feliz!",
-                    "price": "200000",
-                    "contact": [
-                        "3565-2879",
-                        "99854-2200"
-                    ],
-                    "location": [
-                        {
-                            "address": "4VQQ+7W Samambaia, Brasilia - Federal District, Brazil",
-                            "lat": "-15.8618146",
-                            "lng": "-48.1101395",
-                            "staticMapImageUrl": "https://maps.googleapis.com/maps/api/staticmap?center=-15.8618146,-48.1101395&zoom=14&size=500x300&maptype=roadmap&markers=color:red%7Clabel:Place%7C-15.8618146,-48.1101395&key=AIzaSyB8_wq43hAPeb3-uMtT6-zO-hXgZFD25QM"
-                        }
-                    ],
-                    "images": [
-                        "https://imagens-revista.vivadecora.com.br/uploads/2021/03/1-decora%C3%A7%C3%A3o-moderna-para-quarto-feminino-pequeno-cinza-com-m%C3%B3veis-planejados-Foto-Sua-Decora%C3%A7%C3%A3o.jpg",
-                        "https://www.italinea.com.br/antigo/wp-content/uploads/2019/12/face_2801-internas_3.png",
-                        "https://revistanews.com.br/wp-content/uploads/2018/08/quarto-infantil.jpg",
-                        "https://www.plantapronta.com.br/projetos/154/21.jpg"
-                    ]
+                    "address": "4VQQ+7W Samambaia, Brasilia - Federal District, Brazil",
+                    "lat": "-15.8618146",
+                    "lng": "-48.1101395",
+                    "staticMapImageUrl": "https://maps.googleapis.com/maps/api/staticmap?center=-15.8618146,-48.1101395&zoom=14&size=500x300&maptype=roadmap&markers=color:red%7Clabel:Place%7C-15.8618146,-48.1101395&key=AIzaSyB8_wq43hAPeb3-uMtT6-zO-hXgZFD25QM"
                 }
+            ],
+            "images": [
+                "https://imagens-revista.vivadecora.com.br/uploads/2021/03/1-decora%C3%A7%C3%A3o-moderna-para-quarto-feminino-pequeno-cinza-com-m%C3%B3veis-planejados-Foto-Sua-Decora%C3%A7%C3%A3o.jpg",
+                "https://www.italinea.com.br/antigo/wp-content/uploads/2019/12/face_2801-internas_3.png",
+                "https://revistanews.com.br/wp-content/uploads/2018/08/quarto-infantil.jpg",
+                "https://www.plantapronta.com.br/projetos/154/21.jpg"
             ]
         },
-
-
         {
             "userId": "u4",
-            "name": "Carlos Normando",
-            "houses": [
+            "name": "Pedro Paulo",
+            "contract": "venda",
+            "title": "Casa no Por do Sol",
+            "description": "Um lugar bonito e feliz!",
+            "price": "252000",
+            "contact": [
+                "3565-2879",
+                "99854-2200"
+            ],
+            "location": [
                 {
-                    "contract": "venda",
-                    "title": "Casa no Por do Sol",
-                    "description": "Um lugar bonito e feliz!",
-                    "price": "200000",
-                    "contact": [
-                        "3565-2879",
-                        "99854-2200"
-                    ],
-                    "location": [
-                        {
-                            "address": "4VQQ+7W Samambaia, Brasilia - Federal District, Brazil",
-                            "lat": "-15.8618146",
-                            "lng": "-48.1101395",
-                            "staticMapImageUrl": "https://maps.googleapis.com/maps/api/staticmap?center=-15.8618146,-48.1101395&zoom=14&size=500x300&maptype=roadmap&markers=color:red%7Clabel:Place%7C-15.8618146,-48.1101395&key=AIzaSyB8_wq43hAPeb3-uMtT6-zO-hXgZFD25QM"
-                        }
-                    ],
-                    "images": [
-                        "https://imagens-revista.vivadecora.com.br/uploads/2021/03/1-decora%C3%A7%C3%A3o-moderna-para-quarto-feminino-pequeno-cinza-com-m%C3%B3veis-planejados-Foto-Sua-Decora%C3%A7%C3%A3o.jpg",
-                        "https://www.italinea.com.br/antigo/wp-content/uploads/2019/12/face_2801-internas_3.png",
-                        "https://revistanews.com.br/wp-content/uploads/2018/08/quarto-infantil.jpg",
-                        "https://www.plantapronta.com.br/projetos/154/21.jpg"
-                    ]
+                    "address": "4VQQ+7W Samambaia, Brasilia - Federal District, Brazil",
+                    "lat": "-15.8618146",
+                    "lng": "-48.1101395",
+                    "staticMapImageUrl": "https://maps.googleapis.com/maps/api/staticmap?center=-15.8618146,-48.1101395&zoom=14&size=500x300&maptype=roadmap&markers=color:red%7Clabel:Place%7C-15.8618146,-48.1101395&key=AIzaSyB8_wq43hAPeb3-uMtT6-zO-hXgZFD25QM"
                 }
+            ],
+            "images": [
+                "https://imagens-revista.vivadecora.com.br/uploads/2021/03/1-decora%C3%A7%C3%A3o-moderna-para-quarto-feminino-pequeno-cinza-com-m%C3%B3veis-planejados-Foto-Sua-Decora%C3%A7%C3%A3o.jpg",
+                "https://www.italinea.com.br/antigo/wp-content/uploads/2019/12/face_2801-internas_3.png",
+                "https://revistanews.com.br/wp-content/uploads/2018/08/quarto-infantil.jpg",
+                "https://www.plantapronta.com.br/projetos/154/21.jpg"
+            ]
+        },
+        {
+            "userId": "u5",
+            "name": "Carlos Emanuel",
+            "contract": "aluguel",
+            "title": "Casa no Por do Sol",
+            "description": "Um lugar bonito e feliz!",
+            "price": "560",
+            "contact": [
+                "3565-2879",
+                "99854-2200"
+            ],
+            "location": [
+                {
+                    "address": "4VQQ+7W Samambaia, Brasilia - Federal District, Brazil",
+                    "lat": "-15.8618146",
+                    "lng": "-48.1101395",
+                    "staticMapImageUrl": "https://maps.googleapis.com/maps/api/staticmap?center=-15.8618146,-48.1101395&zoom=14&size=500x300&maptype=roadmap&markers=color:red%7Clabel:Place%7C-15.8618146,-48.1101395&key=AIzaSyB8_wq43hAPeb3-uMtT6-zO-hXgZFD25QM"
+                }
+            ],
+            "images": [
+                "https://imagens-revista.vivadecora.com.br/uploads/2021/03/1-decora%C3%A7%C3%A3o-moderna-para-quarto-feminino-pequeno-cinza-com-m%C3%B3veis-planejados-Foto-Sua-Decora%C3%A7%C3%A3o.jpg",
+                "https://www.italinea.com.br/antigo/wp-content/uploads/2019/12/face_2801-internas_3.png",
+                "https://revistanews.com.br/wp-content/uploads/2018/08/quarto-infantil.jpg",
+                "https://www.plantapronta.com.br/projetos/154/21.jpg"
             ]
         }
     ]
