@@ -50,6 +50,10 @@ export class HousesPage implements OnInit, OnDestroy {
     }
   }
 
+  onFilterUpdate() {
+    
+  }
+
   ngOnDestroy() {
     if (this.housesSub) {
       this.housesSub.unsubscribe();

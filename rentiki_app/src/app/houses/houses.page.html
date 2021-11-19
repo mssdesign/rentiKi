@@ -14,7 +14,7 @@
 </ion-header>
 
 <ion-content>
-  <ion-segment value="all">
+  <ion-segment value="all" (ionChange)="onFilterUpdate()">
     <ion-segment-button value="all">Todos</ion-segment-button>
     <ion-segment-button value="rent">Alugar</ion-segment-button>
     <ion-segment-button value="sell">Vender</ion-segment-button>
@@ -36,7 +36,7 @@
 
                 <ion-label class="price">{{ houses.price | currency: 'BRL' }}</ion-label>
 
-                <ion-button>
+                <ion-button routerLink="/houses/house">
                   Mais detalhes
                   <ion-icon name="chevron-forward-outline"></ion-icon>
                 </ion-button>                
