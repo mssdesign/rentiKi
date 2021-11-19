@@ -5,6 +5,7 @@ import { SwiperModule } from 'swiper/angular';
 import { IonicModule } from '@ionic/angular';
 import { HousesPageRoutingModule } from './houses-routing.module';
 import { HousesPage } from './houses.page';
+import { SlideComponent } from './slide/slide.component';
 
 @NgModule({
   imports: [
@@ -14,6 +15,6 @@ import { HousesPage } from './houses.page';
     SwiperModule,
     HousesPageRoutingModule
   ],
-  declarations: [HousesPage]
+  declarations: [HousesPage, SlideComponent]
 })
 export class HousesPageModule {}

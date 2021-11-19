@@ -21,14 +21,14 @@
           <ion-item-sliding *ngFor="let houses of housesLoaded">
             <ion-card>
               <ion-card-header>{{ houses.title }}</ion-card-header>
-      
-              <ion-list *ngFor="let imagePic of houses.images">
-                <ion-img [src]="imagePic"></ion-img>
-              </ion-list>  
 
+              <ion-card-content>
+                <app-slide [houses]="houses"></app-slide>
+              </ion-card-content>
+              
             </ion-card>
           </ion-item-sliding>
-        </ion-list>        
+        </ion-list>
       </ion-col>
     </ion-row>
   </ion-grid>
