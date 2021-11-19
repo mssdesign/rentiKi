@@ -11,7 +11,7 @@ import { offersModel } from './offers.model';
 export class HousesPage implements OnInit, OnDestroy {
   isLoading = false;
   housesLoaded: offersModel[];
-  housesRent: offersModel[]; //HouseModel[];
+  housesRent: offersModel[];
   housesSell: offersModel[];
   private housesSub: Subscription;
 

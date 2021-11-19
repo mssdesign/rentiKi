@@ -14,7 +14,22 @@
     <ion-segment-button value="sell">Vender</ion-segment-button>
   </ion-segment>
 
-  <ion-grid *ngIf="!isLoading">
+  <ion-grid>
+    <ion-row>
+      <ion-col>
+        <ion-list *ngIf="!isLoading && housesLoaded && housesLoaded.length > 0">
+          <ion-item-sliding *ngFor="let houses of housesLoaded">
+            <ion-card>
+              <ion-card-header>{{ houses.title }}</ion-card-header>
+      
+              <ion-list *ngFor="let imagePic of houses.images">
+                <ion-img [src]="imagePic"></ion-img>
+              </ion-list>  
 
+            </ion-card>
+          </ion-item-sliding>
+        </ion-list>        
+      </ion-col>
+    </ion-row>
   </ion-grid>
 </ion-content>
