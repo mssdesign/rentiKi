@@ -10,11 +10,9 @@ import { offersModel } from './offers.model';
 })
 export class HousesPage implements OnInit, OnDestroy {
   isLoading = false;
-  housesLoaded: any[];
-  test: any[];
-  data: any;
-  housesRent: any; //HouseModel[];
-  housesSell: any[];
+  housesLoaded: offersModel[];
+  housesRent: offersModel[]; //HouseModel[];
+  housesSell: offersModel[];
   private housesSub: Subscription;
 
   constructor(private housesService: HousesService) {}
@@ -30,9 +28,6 @@ export class HousesPage implements OnInit, OnDestroy {
     this.housesService.fetchHouses().subscribe(() => {
       this.isLoading = false;
     });
-
-    this.filterRent();
-    //console.log(this.housesLoaded)
   }
 
   filterRent() {
@@ -43,7 +38,16 @@ export class HousesPage implements OnInit, OnDestroy {
         }
       });
     }
-    console.log(this.housesRent);
+  }
+
+  filterSell() {
+    if (this.housesLoaded) {
+      this.housesSell = this.housesLoaded.filter((offersModel) => {
+        if (offersModel['contract'] === 'venda') {
+          return true;
+        }
+      });
+    }
   }
 
   ngOnDestroy() {
@@ -51,5 +55,4 @@ export class HousesPage implements OnInit, OnDestroy {
       this.housesSub.unsubscribe();
     }
   }
-  
 }
