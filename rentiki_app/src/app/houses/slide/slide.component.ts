@@ -22,10 +22,10 @@ export class SlideComponent implements OnInit {
     scrollbar: { draggable: true },
   };
   onSwiper(swiper) {
-    console.log(swiper);
+    //console.log(swiper);
   }
   onSlideChange() {
-    console.log('slide change');
+    //console.log('slide change');
   }
 
 }

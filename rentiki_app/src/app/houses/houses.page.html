@@ -14,7 +14,7 @@
 </ion-header>
 
 <ion-content>
-  <ion-segment value="all" (ionChange)="onFilterUpdate()">
+  <ion-segment value="all" (ionChange)="onFilterUpdate($event)">
     <ion-segment-button value="all">Todos</ion-segment-button>
     <ion-segment-button value="rent">Alugar</ion-segment-button>
     <ion-segment-button value="sell">Vender</ion-segment-button>
@@ -23,8 +23,8 @@
   <ion-grid>
     <ion-row>
       <ion-col>
-        <ion-list *ngIf="!isLoading && housesLoaded && housesLoaded.length > 0">
-          <ion-item-sliding *ngFor="let houses of housesLoaded">
+        <ion-list *ngIf="!isLoading && housesLoadedShow && housesLoadedShow.length > 0">
+          <ion-item-sliding *ngFor="let houses of housesLoadedShow">
             <ion-card>
               <ion-card-header class="ion-text-center">{{ houses.title }}</ion-card-header>
 

@@ -10,6 +10,7 @@ import { offersModel } from './offers.model';
 })
 export class HousesPage implements OnInit, OnDestroy {
   isLoading = false;
+  housesLoadedShow: offersModel[];
   housesLoaded: offersModel[];
   housesRent: offersModel[];
   housesSell: offersModel[];
@@ -20,6 +21,7 @@ export class HousesPage implements OnInit, OnDestroy {
   ngOnInit() {
     this.housesSub = this.housesService.houses.subscribe((houses) => {
       this.housesLoaded = houses;
+      this.housesLoadedShow = this.housesLoaded;
     });
   }
 
@@ -50,8 +52,16 @@ export class HousesPage implements OnInit, OnDestroy {
     }
   }
 
-  onFilterUpdate() {
-    
+  onFilterUpdate(event: any) {
+    if (event.detail.value === 'all') {
+      this.housesLoadedShow = this.housesLoaded;
+    } else if (event.detail.value === 'rent') {
+      this.filterRent();
+      this.housesLoadedShow = this.housesRent;
+    } else {
+      this.filterSell();
+      this.housesLoadedShow = this.housesSell;
+    }
   }
 
   ngOnDestroy() {
