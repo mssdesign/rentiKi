@@ -4,7 +4,7 @@
             "userId": "u1",
             "name": "Julia Cardoso",
             "contract": "venda",
-            "title": "Casa no Por do Sol",
+            "title": "Vende-se casa no Por do Sol",
             "description": "Um lugar bonito e feliz!",
             "price": "200000",
             "contact": [
@@ -30,7 +30,7 @@
             "userId": "u2",
             "name": "Normando Tarquinio",
             "contract": "aluguel",
-            "title": "Casa no Sol Nascente",
+            "title": "Aluga-se casa no Sol Nascente",
             "description": "Um lugar bonito e feliz!",
             "price": "1250",
             "contact": [
@@ -56,7 +56,7 @@
             "userId": "u3",
             "name": "João Silvestre",
             "contract": "venda",
-            "title": "Casa no Lago Sul",
+            "title": "Vende-se casa no Lago Sul",
             "description": "Um lugar bonito e feliz!",
             "price": "180000",
             "contact": [
@@ -82,7 +82,7 @@
             "userId": "u4",
             "name": "Pedro Paulo",
             "contract": "venda",
-            "title": "Grande AP em Águas Claras",
+            "title": "Vende-se grande AP em Águas Claras",
             "description": "Um lugar bonito e feliz!",
             "price": "252000",
             "contact": [
@@ -108,7 +108,7 @@
             "userId": "u5",
             "name": "Carlos Emanuel",
             "contract": "aluguel",
-            "title": "Palácio na Estrutural",
+            "title": "Aluguel de palácio na Estrutural",
             "description": "Um lugar bonito e feliz!",
             "price": "560",
             "contact": [

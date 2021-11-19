@@ -11,11 +11,15 @@ ion-card {
     ion-buttons {
         font-size: 0.7em;
         display: grid;
-        grid-template-columns: 20% 20% 20% 40%;
+        grid-template-columns: auto 40%;
 
         ion-button {
             font-size: inherit;
             grid-column-start: 4;
+        }
+
+        .price {
+            margin-left: 12px;
         }
     }
 }

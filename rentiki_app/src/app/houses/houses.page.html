@@ -8,7 +8,7 @@
 
     <ion-title>Imóveis para alugar</ion-title>
 
-    <ion-icon name="add-circle-outline" class="add-offer" slot="end"></ion-icon>
+    <ion-icon name="add-outline" class="add-offer" slot="end" routerLink="/houses/new-house"></ion-icon>
 
   </ion-toolbar>
 </ion-header>
@@ -32,8 +32,10 @@
                 <app-slide [houses]="houses"></app-slide>
               </ion-card-content>
 
-
               <ion-buttons>
+
+                <ion-label class="price">{{ houses.price | currency: 'BRL' }}</ion-label>
+
                 <ion-button>
                   Mais detalhes
                   <ion-icon name="chevron-forward-outline"></ion-icon>
