@@ -16,9 +16,9 @@ export class SlideComponent implements OnInit {
 
   config: SwiperOptions = {
     slidesPerView: 1,
-    spaceBetween: 0,
-    navigation: true,
-    pagination: { clickable: false },
+    spaceBetween: 5,
+    navigation: false,
+    pagination: { clickable: true },
     scrollbar: { draggable: true },
   };
   onSwiper(swiper) {

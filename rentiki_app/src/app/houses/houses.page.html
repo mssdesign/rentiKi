@@ -20,12 +20,20 @@
         <ion-list *ngIf="!isLoading && housesLoaded && housesLoaded.length > 0">
           <ion-item-sliding *ngFor="let houses of housesLoaded">
             <ion-card>
-              <ion-card-header>{{ houses.title }}</ion-card-header>
+              <ion-card-header class="ion-text-center">{{ houses.title }}</ion-card-header>
 
               <ion-card-content>
                 <app-slide [houses]="houses"></app-slide>
               </ion-card-content>
-              
+
+
+              <ion-buttons>
+                <ion-button>
+                  Mais detalhes
+                  <ion-icon name="chevron-forward-outline"></ion-icon>
+                </ion-button>                
+              </ion-buttons>
+
             </ion-card>
           </ion-item-sliding>
         </ion-list>

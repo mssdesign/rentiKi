@@ -2,10 +2,9 @@
   [config]="config"
   (swiper)="onSwiper($event)"
   (slideChange)="onSlideChange()"
-  *ngFor="let imagePic of houses.images"
   [loop]="true"
 >
-  <ng-template swiperSlide>
+  <ng-template swiperSlide *ngFor="let imagePic of houses.images">
     <ion-img [src]="imagePic"></ion-img>
   </ng-template>
 </swiper>

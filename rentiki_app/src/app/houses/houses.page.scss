@@ -1,3 +1,15 @@
 ion-card {
-    height: 300px;
+    height: 35vh;
+
+    ion-buttons {
+        font-size: 0.7em;
+        display: grid;
+        border: 1px solid black;
+
+        ion-button {
+            font-size: inherit;
+            right: 10px;
+            border: 1px solid black;
+        }
+    }
 }
