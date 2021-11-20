@@ -8,6 +8,7 @@ import { MenuController } from '@ionic/angular';
 })
 export class AppComponent {
   constructor(private menuCtrl: MenuController) {}
+  money = '../assets/icon/money.svg';
 
   closeMenu() {
     this.menuCtrl.close();

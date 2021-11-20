@@ -16,11 +16,15 @@
           </ion-item>
           <ion-item lines="none" routerLink="/houses">
             <ion-icon name="home-outline" slot="start"></ion-icon>
-            <ion-label>Imóveis</ion-label>
+            <ion-label>Encontrar Imóveis</ion-label>
           </ion-item>
           <ion-item lines="none" routerLink="/houses/new-house">
             <ion-icon name="add-outline" class="add-offer" slot="start"></ion-icon>
             <ion-label>Anunciar</ion-label>
+          </ion-item>
+          <ion-item lines="none" routerLink="/houses/new-house">
+            <ion-icon [src]="money" slot="start" class="add-offer"></ion-icon>
+            <ion-label>Meus Anúncios</ion-label>
           </ion-item>
           <ion-item lines="none" routerLink="/houses/favorites">
             <ion-icon name="star-outline" slot="start"></ion-icon>
