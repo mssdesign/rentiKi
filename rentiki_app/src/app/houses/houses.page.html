@@ -26,7 +26,7 @@
         <ion-list *ngIf="!isLoading && housesLoadedShow && housesLoadedShow.length > 0">
           <ion-item-sliding *ngFor="let houses of housesLoadedShow">
             <ion-card>
-              <ion-card-header class="ion-text-center">{{ houses.title }}</ion-card-header>
+              <ion-card-header class="ion-text-center"><ion-label class="title">{{ houses.title }}</ion-label><ion-icon name="heart-outline" class="favorite"></ion-icon></ion-card-header>              
 
               <ion-card-content>
                 <app-slide [houses]="houses"></app-slide>

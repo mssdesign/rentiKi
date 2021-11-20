@@ -4,6 +4,19 @@
     margin-right: 0.6em;
 }
 
+ion-card-header {
+    display: flex;
+    position: relative;
+    justify-content: center;
+
+    .favorite {
+        font-size: 1.5em;
+        position: absolute;
+        right: 0.6em;
+        top: 0.5em;
+    }
+}
+
 ion-card {
     font-weight: bold;
     height: 35vh;
