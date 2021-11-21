@@ -25,8 +25,8 @@ export class HousesService {
         for (const key in offersData) {
           houses.push(
             new offersModel(
-              key + 1,
               offersData[key].userId,
+              offersData[key].offerKey,
               offersData[key].name,
               offersData[key].contract,
               offersData[key].title,
@@ -47,15 +47,15 @@ export class HousesService {
     );
   }
 
-  getHouse(id: string) {
+  getHouse(offerKey: string) {
     return this.houses.pipe(take(1), map(
       housesData => {
         for (let house in housesData) {
-          if (house && housesData[house]['id'] === id) {
+          if (house && housesData[house]['offerKey'] === offerKey) {
             //console.log(housesData[house])
             return new offersModel(
-              housesData[house]['id'],
               housesData[house]['userId'],
+              housesData[house]['offerKey'],
               housesData[house]['name'],
               housesData[house]['contract'],
               housesData[house]['title'],

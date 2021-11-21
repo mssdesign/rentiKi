@@ -2,6 +2,7 @@
     "offers": [
         {
             "userId": "u1",
+            "offerKey": "m1",            
             "name": "Julia Cardoso",
             "contract": "venda",
             "title": "Vende-se casa no Por do Sol",
@@ -29,6 +30,7 @@
         },
         {
             "userId": "u2",
+            "offerKey": "m2",
             "name": "Normando Tarquinio",
             "contract": "aluguel",
             "title": "Aluga-se casa no Sol Nascente",
@@ -56,6 +58,7 @@
         },
         {
             "userId": "u3",
+            "offerKey": "m3",
             "name": "João Silvestre",
             "contract": "venda",
             "title": "Vende-se casa no Lago Sul",
@@ -83,6 +86,7 @@
         },
         {
             "userId": "u4",
+            "offerKey": "m4",
             "name": "Pedro Paulo",
             "contract": "venda",
             "title": "Vende-se grande AP em Águas Claras",
@@ -110,6 +114,7 @@
         },
         {
             "userId": "u5",
+            "offerKey": "m5",
             "name": "Carlos Emanuel",
             "contract": "aluguel",
             "title": "Aluguel de palácio na Estrutural",

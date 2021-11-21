@@ -24,13 +24,13 @@ export class HousePage implements OnInit, OnDestroy {
 
   ngOnInit() {
     this.route.paramMap.subscribe(paramMap => {
-      if (!paramMap.has('houseId')) {
+      if (!paramMap.has('houseOfferKey')) {
         this.navCtrl.navigateBack('/houses');
         return
       }
 
       //console.log(paramMap.get('houseId'))
-      this.offer = this.housesService.getHouse(paramMap.get('houseId'))
+      this.offer = this.housesService.getHouse(paramMap.get('houseOfferKey'))
     })
     
     this.offer.subscribe(offer => {

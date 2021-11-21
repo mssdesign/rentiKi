@@ -20,7 +20,7 @@ const routes: Routes = [
     path: 'offers',
     children: [
       {
-        path: ':houseId',
+        path: ':houseOfferKey',
         loadChildren: () => import('./house/house.module').then( m => m.HousePageModule)
       }
     ]

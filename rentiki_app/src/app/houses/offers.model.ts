@@ -2,8 +2,8 @@ import { HouseLocation } from './location.model';
 
 export class offersModel {
     constructor(
-        public id: string,
-        public userId: string,
+        public userId: string,        
+        public offerKey: string,
         public name: string,
         public contract: string,
         public title: string,
