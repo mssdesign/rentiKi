@@ -1,5 +1,3 @@
-import { HouseLocation } from './location.model';
-
 export class offersModel {
     constructor(
         public userId: string,        
@@ -10,7 +8,7 @@ export class offersModel {
         public description: string,
         public price: string,
         public contact: string[],
-        public location: HouseLocation,
+        public location: string,
         public images: string[]
     ) {}
 }

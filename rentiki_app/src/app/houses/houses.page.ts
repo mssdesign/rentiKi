@@ -14,7 +14,7 @@ export class HousesPage implements OnInit, OnDestroy {
   housesLoaded: offersModel[];
   housesRent: offersModel[];
   housesSell: offersModel[];
-  heart = false;
+  heart: string = 'heart-outline';
   private housesSub: Subscription;
 
   constructor(private housesService: HousesService) {}
@@ -66,7 +66,7 @@ export class HousesPage implements OnInit, OnDestroy {
   }
 
   favoriteToggle() {
-    
+    this.heart = 'heart'
   }
 
   ngOnDestroy() {
