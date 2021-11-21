@@ -66,7 +66,11 @@ export class HousesPage implements OnInit, OnDestroy {
   }
 
   favoriteToggle() {
-    this.heart = 'heart'
+    if (this.heart === 'heart') {
+      this.heart = 'heart-outline';
+    } else {
+      this.heart = 'heart';
+    }
   }
 
   ngOnDestroy() {
