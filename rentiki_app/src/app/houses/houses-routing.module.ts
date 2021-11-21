@@ -6,20 +6,25 @@ import { HousesPage } from './houses.page';
 const routes: Routes = [
   {
     path: '',
-    component: HousesPage
+    component: HousesPage,
+  },
+  {
+    path: 'new-house',
+    loadChildren: () => import('./new-house/new-house.module').then( m => m.NewHousePageModule)
   },
   {
     path: 'favorites',
     loadChildren: () => import('./favorites/favorites.module').then( m => m.FavoritesPageModule)
   },
   {
-    path: ':houseId',
-    loadChildren: () => import('./house/house.module').then( m => m.HousePageModule)
+    path: 'offers',
+    children: [
+      {
+        path: ':houseId',
+        loadChildren: () => import('./house/house.module').then( m => m.HousePageModule)
+      }
+    ]
   },
-  {
-    path: 'new-house',
-    loadChildren: () => import('./new-house/new-house.module').then( m => m.NewHousePageModule)
-  }
 ];
 
 @NgModule({

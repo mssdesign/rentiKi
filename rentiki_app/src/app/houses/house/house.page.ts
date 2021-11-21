@@ -39,7 +39,7 @@ export class HousePage implements OnInit, OnDestroy {
   }
 
   ngOnDestroy() {
-    
+    //Arrumar isso aqui também
   }
 
 }
