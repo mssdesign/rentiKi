@@ -34,7 +34,8 @@ export class HousesService {
               offersData[key].price,
               offersData[key].contact,
               offersData[key].location,
-              offersData[key].images
+              offersData[key].images,
+              offersData[key].favorite,
             )
           );
         }
@@ -42,9 +43,13 @@ export class HousesService {
       }),
       tap((houses) => {
         this._houses.next(houses);
-        //console.log(houses)
+        console.log(houses)
       })
     );
+  }
+
+  favoriteToggle(offerKey: string) {
+
   }
 
   getHouse(offerKey: string) {
@@ -63,7 +68,8 @@ export class HousesService {
               housesData[house]['price'],
               housesData[house]['contact'],
               housesData[house]['location'],
-              housesData[house]['images']
+              housesData[house]['images'],
+              housesData[house]['favorite']
             )
           }
         }

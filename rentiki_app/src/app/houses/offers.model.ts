@@ -9,6 +9,7 @@ export class offersModel {
         public price: string,
         public contact: string[],
         public location: string,
-        public images: string[]
+        public images: string[],
+        public favorite: boolean
     ) {}
 }
