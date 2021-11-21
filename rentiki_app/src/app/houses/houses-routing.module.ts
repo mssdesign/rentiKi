@@ -13,7 +13,7 @@ const routes: Routes = [
     loadChildren: () => import('./favorites/favorites.module').then( m => m.FavoritesPageModule)
   },
   {
-    path: 'house',
+    path: ':houseId',
     loadChildren: () => import('./house/house.module').then( m => m.HousePageModule)
   },
   {

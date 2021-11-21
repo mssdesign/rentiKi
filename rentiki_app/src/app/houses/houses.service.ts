@@ -19,13 +19,13 @@ export class HousesService {
   }
 
   fetchHouses() {
-    return this.http.get<any>(this.dataUrl).pipe(
+    return this.http.get<any>(this.dataUrl).pipe(take(1),
       map((offersData) => {
         const houses = [];
         for (const key in offersData) {
           houses.push(
             new offersModel(
-              key,
+              key + 1,
               offersData[key].userId,
               offersData[key].name,
               offersData[key].contract,
@@ -46,4 +46,29 @@ export class HousesService {
       })
     );
   }
+
+  getHouse(id: string) {
+    return this.houses.pipe(take(1), map(
+      housesData => {
+        for (let house in housesData) {
+          if (house && housesData[house]['id'] === id) {
+            //console.log(housesData[house])
+            return new offersModel(
+              housesData[house]['id'],
+              housesData[house]['userId'],
+              housesData[house]['name'],
+              housesData[house]['contract'],
+              housesData[house]['title'],
+              housesData[house]['description'],
+              housesData[house]['price'],
+              housesData[house]['contact'],
+              housesData[house]['location'],
+              housesData[house]['images']
+            )
+          }
+        }
+      }
+    ))
+  }
+
 }
