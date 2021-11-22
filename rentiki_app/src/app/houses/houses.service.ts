@@ -3,16 +3,18 @@ import { HttpClient } from '@angular/common/http';
 import { offersModel } from './offers.model';
 import { catchError, map, take, tap } from 'rxjs/operators';
 import { BehaviorSubject } from 'rxjs';
+import { Storage } from '@ionic/storage-angular';
 
 @Injectable({
   providedIn: 'root',
 })
 export class HousesService {
   private _houses = new BehaviorSubject<offersModel[]>([]);
+  private _storage: Storage | null = null;
 
   dataUrl = 'http://localhost:3001/offers';
 
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient, private storage: Storage) {}
 
   get houses() {
     return this._houses.asObservable();
@@ -48,8 +50,15 @@ export class HousesService {
     );
   }
 
-  favoriteToggle(offerKey: string) {
+  //A função abaixo foi feita com base em: https://github.com/ionic-team/ionic-storage
+  async saveLocal() {
+    const storage = await this.storage.create();
+    this._storage = storage;
+  }
 
+  //Método para armazenar os favorites localmente
+  favoriteToggle(offerKey: string) {
+    this._storage?.set(offerKey, true)
   }
 
   getHouse(offerKey: string) {
