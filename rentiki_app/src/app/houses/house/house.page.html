@@ -3,10 +3,10 @@
     <ion-buttons slot="start">
       <ion-back-button defaultHref="/houses"></ion-back-button>
     </ion-buttons>
-    <ion-title>{{ useOffer.title }}</ion-title>
+    <ion-title>{{ useOffer?.title }}</ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
-
+  <ion-label>{{ useOffer?.favorite }}</ion-label>
 </ion-content>

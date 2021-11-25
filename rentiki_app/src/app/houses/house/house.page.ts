@@ -33,7 +33,7 @@ export class HousePage implements OnInit, OnDestroy {
       this.offer = this.housesService.getHouse(paramMap.get('houseOfferKey'))
     })
     
-    this.offer.subscribe(offer => {
+    this.offer.subscribe((offer) => {
       this.useOffer = offer;
     })
   }
