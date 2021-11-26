@@ -8,5 +8,32 @@
 </ion-header>
 
 <ion-content>
+  <ion-grid>
+    <ion-row>
+      <ion-col>
+        <ion-list *ngIf="!isLoading && housesLoaded && housesLoaded.length > 0">
+          <ion-item-sliding *ngFor="let houses of housesLoaded">
+            <ion-card>
+              <ion-card-header class="ion-text-center"><ion-label class="title">{{ houses.title }}</ion-label><ion-icon [name]="houses.favorite === false ? 'heart-outline' : 'heart'" [style.color]="houses.favorite === false ? '' : 'red'" (click)="onFavoriteToggle(houses.offerKey)" class="favorite"></ion-icon></ion-card-header>              
 
+              <ion-card-content>
+                <app-slide [houses]="houses"></app-slide>
+              </ion-card-content>
+
+              <ion-buttons>
+
+                <ion-label class="price">{{ houses.price | currency: 'BRL' }}</ion-label>
+
+                <ion-button [routerLink]="['/', 'houses', 'offers', houses.offerKey]">
+                  Mais detalhes
+                  <ion-icon name="chevron-forward-outline"></ion-icon>
+                </ion-button>                
+              </ion-buttons>
+
+            </ion-card>
+          </ion-item-sliding>
+        </ion-list>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
 </ion-content>

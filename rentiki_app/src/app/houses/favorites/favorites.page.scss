@@ -1,0 +1,32 @@
+ion-card-header {
+    display: flex;
+    position: relative;
+    justify-content: center;
+
+    .favorite {
+        font-size: 1.5em;
+        position: absolute;
+        right: 0.6em;
+        top: 0.5em;
+    }
+}
+
+ion-card {
+    font-weight: bold;
+    height: 35vh;
+
+    ion-buttons {
+        font-size: 0.7em;
+        display: grid;
+        grid-template-columns: auto 40%;
+
+        ion-button {
+            font-size: inherit;
+            grid-column-start: 4;
+        }
+
+        .price {
+            margin-left: 12px;
+        }
+    }
+}

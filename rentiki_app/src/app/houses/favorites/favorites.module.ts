@@ -1,11 +1,9 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-
+import { SlideComponentModule } from '../slide/slide.module';
 import { IonicModule } from '@ionic/angular';
-
 import { FavoritesPageRoutingModule } from './favorites-routing.module';
-
 import { FavoritesPage } from './favorites.page';
 
 @NgModule({
@@ -13,6 +11,7 @@ import { FavoritesPage } from './favorites.page';
     CommonModule,
     FormsModule,
     IonicModule,
+    SlideComponentModule,
     FavoritesPageRoutingModule
   ],
   declarations: [FavoritesPage]
