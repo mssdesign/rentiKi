@@ -8,5 +8,84 @@
 </ion-header>
 
 <ion-content>
+  <form [formGroup]="form">
+    <ion-grid>
+      <ion-row>
+        <ion-col>
+          <ion-label>Título do Anúncio:</ion-label>
+          <ion-item class="offerTextInput">
+            <ion-input
+              type="text"
+              formControlName="title"
+            ></ion-input>
+          </ion-item>
+        </ion-col>
+      </ion-row>
 
+      <ion-row>
+        <ion-col>
+          <ion-label>Descrição do anúncio:</ion-label>
+          <ion-item class="offerTextInput">
+            <ion-textarea
+              type="text"
+              formControlName="description"
+              rows="5"
+              placeholder="Descreva seu imóvel aqui."
+            ></ion-textarea>
+          </ion-item>
+        </ion-col>
+      </ion-row>
+
+      <ion-row>
+        <ion-col>
+          <ion-label>Endereço</ion-label>
+          <ion-item class="offerTextInput">
+            <ion-input type="text" formControlName="location"></ion-input>
+          </ion-item>
+        </ion-col>
+      </ion-row>
+
+      <ion-row>
+        <ion-col>
+          <ion-list>
+            <ion-label>Tipo de contrato:</ion-label>
+            <ion-radio-group formControlName="contract">
+
+              <ion-item class="radio-buttons">
+                <ion-label>Venda</ion-label>
+                <ion-radio slot="start" value="sell"></ion-radio>
+              </ion-item>
+
+              <ion-item class="radio-buttons">
+                <ion-label>Aluguel</ion-label>
+                <ion-radio slot="start" value="rent"></ion-radio>
+              </ion-item>
+
+            </ion-radio-group>
+          </ion-list>
+        </ion-col>
+      </ion-row>
+
+      <ion-row>
+        <ion-col>
+          <ion-label>Telefone(s):</ion-label>
+          <ion-list>
+
+            <div>
+              <ion-item class="offerTextInput">
+                <ion-input type="number" formControlName="contact"></ion-input>
+                <ion-icon name="add"></ion-icon>                                       
+              </ion-item>
+              <div class="whatsappBtn">
+                <ion-checkbox slot="start" style="margin-right: 5px;"></ion-checkbox>
+                <ion-label>Esse número possui whatsapp</ion-label>
+              </div>                     
+            </div>
+
+          </ion-list>
+        </ion-col>
+      </ion-row>
+      
+    </ion-grid>
+  </form>
 </ion-content>

@@ -6,8 +6,12 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./auth.page.scss'],
 })
 export class AuthPage implements OnInit {
+  isLoading = false;
+  isLogin = true;
 
-  constructor() { }
+  constructor(
+    
+  ) {}
 
   ngOnInit() {
   }

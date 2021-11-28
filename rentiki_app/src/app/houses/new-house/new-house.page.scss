@@ -1,0 +1,19 @@
+ion-row {
+    margin-top: 15px;
+}
+
+.offerTextInput {
+    --background: #f6f5f5;
+    border-radius: 5px;
+    margin-top: 5px;
+}
+
+.radio-buttons {    
+    --background-focused: var(--ion-color-primary);
+    --ripple-color: var(--ion-color-primary);     
+}
+
+.whatsappBtn {
+    display: flex;
+    margin-top: 5px;
+}
