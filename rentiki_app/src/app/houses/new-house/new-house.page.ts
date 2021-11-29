@@ -9,6 +9,7 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 })
 export class NewHousePage implements OnInit {
   form: FormGroup;
+  radioGroupValue: string = 'sell';
 
   constructor(private housesService: HousesService) {}
 
@@ -23,7 +24,7 @@ export class NewHousePage implements OnInit {
         validators: [Validators.required],
       }),
       contract: new FormControl({
-        value: 'sell',
+        value: this.radioGroupValue,
         disabled: false,
       }),
       location: new FormControl(null, {
@@ -35,6 +36,14 @@ export class NewHousePage implements OnInit {
         validators: [Validators.required]
       })
     })
+  }
+
+  radioGroupChange(e: any) {
+    this.radioGroupValue = e.detail.value
+  }
+
+  onCreateOffer() {
+    console.log(this.form)
   }
 
 }
