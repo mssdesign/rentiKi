@@ -1,3 +1,5 @@
+import { phoneModel } from './phone.model';
+
 export class offersModel {
     constructor(
         public userId: string,        
@@ -7,7 +9,7 @@ export class offersModel {
         public title: string,
         public description: string,
         public price: string,
-        public contact: string[],
+        public contact: phoneModel[],
         public location: string,
         public images: string[],
         public favorite: boolean

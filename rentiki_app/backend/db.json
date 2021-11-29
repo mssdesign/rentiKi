@@ -8,10 +8,7 @@
             "title": "Vende-se casa no Por do Sol",
             "description": "Um lugar bonito e feliz!",
             "price": "200000",
-            "contact": [
-                "3565-2879",
-                "99854-2200"
-            ],
+            "contact": [{"phone": "33781165","whatsapp": false},{"phone": "33781165","whatsapp": false}],
             "location": "SHPS Q302 CA LOTE 02",
             "images": [
                 "https://media.gettyimages.com/photos/craftsman-style-house-picture-id523075374?s=2048x2048",
@@ -29,10 +26,7 @@
             "title": "Aluga-se casa no Sol Nascente",
             "description": "Um lugar bonito e feliz!",
             "price": "1250",
-            "contact": [
-                "3565-2879",
-                "99854-2200"
-            ],
+            "contact": [{"phone": "33781165","whatsapp": false},{"phone": "33781165","whatsapp": false}],
             "location": "SHPS Q302 CA LOTE 02",
             "images": [
                 "https://media.gettyimages.com/photos/three-small-houses-in-row-picture-id595504906?s=2048x2048",
@@ -50,10 +44,7 @@
             "title": "Vende-se casa no Lago Sul",
             "description": "Um lugar bonito e feliz!",
             "price": "180000",
-            "contact": [
-                "3565-2879",
-                "99854-2200"
-            ],
+            "contact": [{"phone": "33781165","whatsapp": false},{"phone": "33781165","whatsapp": false}],
             "location": "SHPS Q302 CA LOTE 02",
             "images": [
                 "https://media.gettyimages.com/photos/modern-luxury-house-with-private-swimming-pool-at-dusk-picture-id1155103273?s=2048x2048",
@@ -71,10 +62,7 @@
             "title": "Vende-se grande AP em Águas Claras",
             "description": "Um lugar bonito e feliz!",
             "price": "252000",
-            "contact": [
-                "3565-2879",
-                "99854-2200"
-            ],
+            "contact": [{"phone": "33781165","whatsapp": false},{"phone": "33781165","whatsapp": false}],
             "location": "SHPS Q302 CA LOTE 02",
             "images": [
                 "https://media.gettyimages.com/photos/modern-twostory-home-and-front-yard-in-buenos-aires-picture-id1198218812?s=2048x2048",
@@ -92,10 +80,7 @@
             "title": "Aluguel de palácio na Estrutural",
             "description": "Um lugar bonito e feliz!",
             "price": "560",
-            "contact": [
-                "3565-2879",
-                "99854-2200"
-            ],
+            "contact": [{"phone": "33781165","whatsapp": false},{"phone": "33781165","whatsapp": false}],
             "location": "SHPS Q302 CA LOTE 02",
             "images": [
                 "https://media.gettyimages.com/photos/self-build-country-home-morning-mist-picture-id680520047?s=2048x2048",
