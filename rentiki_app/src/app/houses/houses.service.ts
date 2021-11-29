@@ -37,6 +37,7 @@ export class HousesService {
               offersData[key].title,
               offersData[key].description,
               offersData[key].price,
+              offersData[key].whatsapp,
               offersData[key].contact,
               offersData[key].location,
               offersData[key].images,
@@ -92,7 +93,8 @@ export class HousesService {
               housesData[house]['title'],
               housesData[house]['description'],
               housesData[house]['price'],
-              housesData[house]['contact'],
+              housesData[house]['contact'],              
+              housesData[house]['whatsapp'],
               housesData[house]['location'],
               housesData[house]['images'],
               housesData[house]['favorite']
