@@ -9,6 +9,7 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 })
 export class NewHousePage implements OnInit {
   @ViewChild('tel', { read: ElementRef, static: false }) tel: ElementRef;
+  @ViewChild('price', { read: ElementRef, static: false }) price: ElementRef;
   form: FormGroup;
   radioGroupValue: string = 'sell';
   whatsappNum: number;
@@ -29,14 +30,18 @@ export class NewHousePage implements OnInit {
         value: this.radioGroupValue,
         disabled: false,
       }),
+      contact: new FormControl(null, {
+        updateOn: 'blur',
+        validators: [Validators.required],
+      }),      
       location: new FormControl(null, {
         updateOn: 'blur',
         validators: [Validators.required],
       }),
-      contact: new FormControl(null, {
+      price: new FormControl(null, {
         updateOn: 'blur',
-        validators: [Validators.required],
-      }),
+        validators: [Validators.required]
+      })
     });
   }
 
@@ -51,6 +56,13 @@ export class NewHousePage implements OnInit {
     number = number.replace(/^(\d{2})(\d)/g, '($1) $2'); //Separando DDD do resto do número com parênteses
     number = number.replace(/(\d)(\d{4})$/, '$1-$2'); //Colocando hífen entre os 4 ou 5 primeiros números
     this.tel.nativeElement.value = number;
+  }
+
+  maskPrice(price: any) {
+    let value = price;
+    value = value.replace(/\D/gi, '')
+    this.price.nativeElement.value = `R$ ${value},00`;
+    console.log(price)
   }
 
   onCreateOffer() {

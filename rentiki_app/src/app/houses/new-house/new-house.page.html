@@ -49,6 +49,7 @@
             <ion-radio-group
               (ionChange)="radioGroupChange($event)"
               formControlName="contract"
+              #contract
             >
               <ion-item class="radio-buttons">
                 <ion-label>Venda</ion-label>
@@ -66,6 +67,20 @@
 
       <ion-row>
         <ion-col>
+          <ion-label>{{ contract.value === 'sell' ? 'Preço de venda: ' : 'Valor do aluguel: ' }}</ion-label>
+          <ion-item class="offerTextInput">
+            <ion-input placeholder="R$:"
+            #price
+            formControlName="price"
+            (keyup.enter)="maskPrice(price.value)"
+            (ionBlur)="maskPrice(price.value)"
+            ></ion-input>
+          </ion-item>
+        </ion-col>
+      </ion-row>
+
+      <ion-row>
+        <ion-col>
           <ion-label>Telefone(s):</ion-label>
           <ion-list>
             <div>
@@ -75,6 +90,7 @@
                   #tel
                   (keyup.enter)="maskNumber(tel.value)"
                   (ionBlur)="maskNumber(tel.value)"
+                  placeholder="(DDD) + Número"
                 ></ion-input>
                 <ion-icon name="add"></ion-icon>
               </ion-item>
