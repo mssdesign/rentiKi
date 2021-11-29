@@ -70,7 +70,12 @@
           <ion-list>
             <div>
               <ion-item class="offerTextInput">
-                <ion-input type="number" formControlName="contact"></ion-input>
+                <ion-input
+                  formControlName="contact"
+                  #tel
+                  (keyup.enter)="maskNumber(tel.value)"
+                  (ionBlur)="maskNumber(tel.value)"
+                ></ion-input>
                 <ion-icon name="add"></ion-icon>
               </ion-item>
               <div class="whatsappBtn">
