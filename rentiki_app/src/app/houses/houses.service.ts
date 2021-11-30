@@ -32,7 +32,6 @@ export class HousesService {
             new offersModel(
               offersData[key].userId,
               offersData[key].offerKey,
-              offersData[key].name,
               offersData[key].contract,
               offersData[key].title,
               offersData[key].description,
@@ -88,7 +87,6 @@ export class HousesService {
             return new offersModel(
               housesData[house]['userId'],
               housesData[house]['offerKey'],
-              housesData[house]['name'],
               housesData[house]['contract'],
               housesData[house]['title'],
               housesData[house]['description'],

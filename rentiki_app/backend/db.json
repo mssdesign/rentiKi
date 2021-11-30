@@ -2,8 +2,7 @@
     "offers": [
         {
             "userId": "u1",
-            "offerKey": "m1",            
-            "name": "Julia Cardoso",        
+            "offerKey": "m1",        
             "contract": "venda",
             "title": "Vende-se casa no Por do Sol",
             "description": "Um lugar bonito e feliz!",
@@ -20,9 +19,8 @@
             ]
         },
         {
-            "userId": "u2",
+            "userId": "u1",
             "offerKey": "m2",
-            "name": "Normando Tarquinio",
             "contract": "aluguel",
             "title": "Aluga-se casa no Sol Nascente",
             "description": "Um lugar bonito e feliz!",
@@ -41,7 +39,6 @@
         {
             "userId": "u3",
             "offerKey": "m3",
-            "name": "João Silvestre",
             "contract": "venda",
             "title": "Vende-se casa no Lago Sul",
             "description": "Um lugar bonito e feliz!",
@@ -58,9 +55,8 @@
             ]
         },
         {
-            "userId": "u4",
+            "userId": "u5",
             "offerKey": "m4",
-            "name": "Pedro Paulo",
             "contract": "venda",
             "title": "Vende-se grande AP em Águas Claras",
             "description": "Um lugar bonito e feliz!",
@@ -79,7 +75,6 @@
         {
             "userId": "u5",
             "offerKey": "m5",
-            "name": "Carlos Emanuel",
             "contract": "aluguel",
             "title": "Aluguel de palácio na Estrutural",
             "description": "Um lugar bonito e feliz!",
@@ -94,6 +89,20 @@
                 "https://revistanews.com.br/wp-content/uploads/2018/08/quarto-infantil.jpg",
                 "https://www.plantapronta.com.br/projetos/154/21.jpg"
             ]
+        }
+    ],
+    "users": [
+        {
+            "name": "Carlos Emanuel",    
+            "userId": "u5" 
+        },
+        {
+            "name": "Pedro Paulo",    
+            "userId": "u3" 
+        },
+        {
+            "name": "Fernando Mariguela",    
+            "userId": "u1" 
         }
     ]
 }

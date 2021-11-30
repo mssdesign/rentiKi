@@ -61,7 +61,7 @@ export class NewHousePage implements OnInit {
   maskPrice(price: any) {
     let value = price;
     value = value.replace(/\D/gi, '')
-    this.price.nativeElement.value = `R$ ${value},00`;
+    this.price.nativeElement.value = `R$ ${value}`;
     console.log(price)
   }
 
