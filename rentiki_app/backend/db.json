@@ -93,15 +93,18 @@
     ],
     "users": [
         {
-            "name": "Carlos Emanuel",    
+            "name": "Carlos Emanuel",
+            "email": "teste1@teste.com",    
             "userId": "u5" 
         },
         {
-            "name": "Pedro Paulo",    
+            "name": "Pedro Paulo",
+            "email": "teste2@teste.com",    
             "userId": "u3" 
         },
         {
-            "name": "Fernando Mariguela",    
+            "name": "Fernando Mariguela",
+            "email": "teste2@teste.com",    
             "userId": "u1" 
         }
     ]
