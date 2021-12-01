@@ -1,12 +1,53 @@
 <ion-header>
   <ion-toolbar color="primary">
-    <ion-buttons slot="start">
-      <ion-menu-button menuId="first"></ion-menu-button>
-    </ion-buttons>
-    <ion-title>Login/Cadastro</ion-title>
+    <ion-title class="ion-text-center">Bem Vindo</ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
-  <ion-label>Precisa terminar autenticação primeiro</ion-label>
+  <form #f="ngForm" (ngSubmit)="onSubmit(f)">
+    <ion-grid>
+      <ion-row>
+        <ion-col>
+          <ion-list>
+
+            <ion-item>
+              <ion-label position="floating">E-mail</ion-label>
+              <ion-input
+                type="email"
+                name="email"
+                required
+                email
+              ></ion-input>
+            </ion-item>
+
+            <ion-item>
+              <ion-label position="floating">Senha</ion-label>
+              <ion-input
+                type="password"
+                ngModel
+                name="password"
+                required
+                minlength="6"
+              ></ion-input>
+            </ion-item>
+
+            <ion-button
+              color="primary"
+              expand="block"
+              type="submit"
+              routerLink="/"
+            >Login</ion-button>
+
+          </ion-list>
+        </ion-col>
+      </ion-row>
+
+      <ion-row>
+        <ion-col id="signupPlace">
+          <ion-label id="signup">Cadastrar</ion-label>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </form>
 </ion-content>
