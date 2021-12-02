@@ -1,4 +1,6 @@
+import { AuthService } from './auth.service';
 import { Component, OnInit } from '@angular/core';
+import { NgForm } from '@angular/forms';
 
 @Component({
   selector: 'app-auth',
@@ -10,14 +12,29 @@ export class AuthPage implements OnInit {
   isLogin = true;
 
   constructor(
-    
+    private auth: AuthService,
   ) {}
 
-  ngOnInit() {
+  ngOnInit() {}
+
+  authenticate(email: string, password: string) {
+
   }
 
-  onSubmit(f: any) {
+  onSubmit(form: NgForm) {
+    if (!form.valid) {
+      return
+    }
 
+    const email = form.value.email;
+    const password = form.value.password;
+
+    this.authenticate(email, password);
+    form.reset();
+  }
+
+  onSignup() {
+    this.isLogin = !this.isLogin;
   }
 
 }

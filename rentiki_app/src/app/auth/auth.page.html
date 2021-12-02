@@ -1,6 +1,6 @@
 <ion-header>
   <ion-toolbar color="primary">
-    <ion-title class="ion-text-center">Bem Vindo</ion-title>
+    <ion-title class="ion-text-center">{{ isLogin ? 'Fazer Login' : 'Cadastre-se' }}</ion-title>
   </ion-toolbar>
 </ion-header>
 
@@ -15,9 +15,11 @@
               <ion-label position="floating">E-mail</ion-label>
               <ion-input
                 type="email"
+                ngModel
                 name="email"
                 required
                 email
+                #emailCtrl="ngModel"
               ></ion-input>
             </ion-item>
 
@@ -28,16 +30,18 @@
                 ngModel
                 name="password"
                 required
+                #passwordCtrl="ngModel"
                 minlength="6"
               ></ion-input>
             </ion-item>
 
             <ion-button
+              [disabled]="!f.valid"
               color="primary"
               expand="block"
               type="submit"
               routerLink="/"
-            >Login</ion-button>
+            >{{ isLogin ? 'Entrar' : 'Cadastrar' }}</ion-button>
 
           </ion-list>
         </ion-col>
@@ -45,7 +49,7 @@
 
       <ion-row>
         <ion-col id="signupPlace">
-          <ion-label id="signup">Cadastrar</ion-label>
+          <ion-label id="signup" (click)="onSignup()">{{ isLogin ? 'Cadastre-se' : 'Login' }}</ion-label>
         </ion-col>
       </ion-row>
     </ion-grid>
