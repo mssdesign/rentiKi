@@ -1,3 +1,4 @@
+import { environment } from './../../environments/environment';
 import { userModel } from './users.model';
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
@@ -16,6 +17,17 @@ export class AuthService {
 
   get users() {
     return this._users.asObservable();
+  }
+
+  signUpUser(email: string, password: string) {
+
+    const req = {
+      email: email,
+      password: password,
+      returnSecureToken: true
+    }
+
+    return this.httpClt.post(`https://identitytoolkit.googleapis.com/v1/accounts:signUp?key=${environment.firebaseApiKey}`, req);
   }
 
   fetchUsers() {

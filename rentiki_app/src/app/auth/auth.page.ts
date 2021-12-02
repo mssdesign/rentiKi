@@ -30,10 +30,18 @@ export class AuthPage implements OnInit {
     const password = form.value.password;
 
     this.authenticate(email, password);
-    form.reset();
+    console.log(email, password)
+
+    if (this.isLogin) {
+      this.auth.signUpUser(email, password).subscribe(a => console.log(a)); //apagar
+    } else {
+      this.auth.signUpUser(email, password).subscribe(a => console.log(a));
+    }
+    
+    form.reset();    
   }
 
-  onSignup() {
+  onSwitchAuth() {
     this.isLogin = !this.isLogin;
   }
 
