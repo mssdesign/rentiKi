@@ -19,7 +19,7 @@ interface AuthResponseData {
 })
 export class AuthService {
   private _users = new BehaviorSubject<userModel[]>([]);
-
+  userIsAuthenticated = true;
   dataUrl = 'http://localhost:3001/users';
 
   constructor(private httpClt: HttpClient) {}
