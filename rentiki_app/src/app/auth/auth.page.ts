@@ -35,7 +35,7 @@ export class AuthPage implements OnInit {
     if (this.isLogin) {
       this.auth.signUpUser(email, password).subscribe(a => console.log(a)); //apagar
     } else {
-      this.auth.signUpUser(email, password).subscribe(a => console.log(a));
+      this.auth.signUpUser(email, password).subscribe(resData => console.log(resData));
     }
     
     form.reset();    

@@ -5,6 +5,15 @@ import { Injectable } from '@angular/core';
 import { take, map, tap } from 'rxjs/operators';
 import { BehaviorSubject } from 'rxjs';
 
+interface AuthResponseData {
+  idToken: string;
+  email: string;
+  refreshToken: string;
+  expiresIn: string;
+  localId: string;
+  registered?: boolean;
+}
+
 @Injectable({
   providedIn: 'root',
 })
@@ -27,7 +36,7 @@ export class AuthService {
       returnSecureToken: true
     }
 
-    return this.httpClt.post(`https://identitytoolkit.googleapis.com/v1/accounts:signUp?key=${environment.firebaseApiKey}`, req);
+    return this.httpClt.post<AuthResponseData>(`https://identitytoolkit.googleapis.com/v1/accounts:signUp?key=${environment.firebaseApiKey}`, req);
   }
 
   fetchUsers() {
