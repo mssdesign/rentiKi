@@ -39,8 +39,17 @@ export class AuthService {
     return this.httpClt.post<AuthResponseData>(`https://identitytoolkit.googleapis.com/v1/accounts:signUp?key=${environment.firebaseApiKey}`, req);
   }
 
-  signUser() {
+  signInUser(email: string, password: string) {
+
+    const req = {
+      email: email,
+      password: password,
+      returnSecureToken: true
+    }
+
     this.userIsAuthenticated = true;
+
+    return this.httpClt.post<AuthResponseData>(`https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=${environment.firebaseApiKey}`, req);
   }
 
   logout() {

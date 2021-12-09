@@ -35,7 +35,7 @@ export class AuthPage implements OnInit {
     console.log(email, password)
 
     if (this.isLogin) {
-      this.auth.signUser();
+      this.auth.signInUser(email, password).subscribe(resData => console.log(resData));
       this.router.navigateByUrl('/houses')
     } else {
       this.auth.signUpUser(email, password).subscribe(resData => console.log(resData));
