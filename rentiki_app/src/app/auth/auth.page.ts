@@ -1,6 +1,7 @@
 import { AuthService } from './auth.service';
 import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-auth',
@@ -13,6 +14,7 @@ export class AuthPage implements OnInit {
 
   constructor(
     private auth: AuthService,
+    private router: Router
   ) {}
 
   ngOnInit() {}
@@ -33,7 +35,8 @@ export class AuthPage implements OnInit {
     console.log(email, password)
 
     if (this.isLogin) {
-      this.auth.signUpUser(email, password).subscribe(a => console.log(a)); //apagar
+      this.auth.signUser();
+      this.router.navigateByUrl('/houses')
     } else {
       this.auth.signUpUser(email, password).subscribe(resData => console.log(resData));
     }

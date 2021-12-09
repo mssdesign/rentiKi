@@ -19,7 +19,7 @@ interface AuthResponseData {
 })
 export class AuthService {
   private _users = new BehaviorSubject<userModel[]>([]);
-  userIsAuthenticated = true;
+  userIsAuthenticated = false;
   dataUrl = 'http://localhost:3001/users';
 
   constructor(private httpClt: HttpClient) {}
@@ -37,6 +37,14 @@ export class AuthService {
     }
 
     return this.httpClt.post<AuthResponseData>(`https://identitytoolkit.googleapis.com/v1/accounts:signUp?key=${environment.firebaseApiKey}`, req);
+  }
+
+  signUser() {
+    this.userIsAuthenticated = true;
+  }
+
+  logout() {
+    this.userIsAuthenticated = false;
   }
 
   fetchUsers() {

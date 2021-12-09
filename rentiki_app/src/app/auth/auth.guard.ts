@@ -22,7 +22,8 @@ export class AuthGuard implements CanLoad {
       this.router.navigateByUrl('/auth');
     }
 
-  return this.authService.userIsAuthenticated;
+    return this.authService.userIsAuthenticated;
+  }
 }
 
 //Guards podem ser adicionados a rotas para controlar o acesso e identificar o usuário
