@@ -150,7 +150,6 @@ export class AuthService implements OnDestroy {
     return from(Storage.get({ key: 'authData' })).pipe(
       map((storedData) => {
         if (!storedData || !storedData.value) {
-          console.log('falha na linha 155')
           return null;
         }
 
