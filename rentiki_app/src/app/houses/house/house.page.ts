@@ -29,7 +29,6 @@ export class HousePage implements OnInit, OnDestroy {
         return
       }
 
-      //console.log(paramMap.get('houseId'))
       this.offer = this.housesService.getHouse(paramMap.get('houseOfferKey'))
     })
     

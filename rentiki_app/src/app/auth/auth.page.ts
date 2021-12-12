@@ -36,7 +36,6 @@ export class AuthPage implements OnInit {
 
     authObservable.subscribe(
       (resData) => {
-        //console.log(resData);
         this.router.navigateByUrl('/houses')
       },
       (error) => {

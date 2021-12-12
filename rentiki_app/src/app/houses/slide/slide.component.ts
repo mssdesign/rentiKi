@@ -21,6 +21,7 @@ export class SlideComponent implements OnInit {
     pagination: { clickable: true },
     scrollbar: { draggable: true },
   };
+  
   onSwiper(swiper) {
     //console.log(swiper);
   }

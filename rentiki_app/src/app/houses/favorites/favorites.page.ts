@@ -34,7 +34,6 @@ export class FavoritesPage implements OnInit, OnDestroy {
   onFavoriteToggle(offerKey: string) {
     this.housesService.favoriteToggle(offerKey);
     this.ionViewWillEnter();
-    //console.log(offerKey)
   }
 
   ngOnDestroy() {

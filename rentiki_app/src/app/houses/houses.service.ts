@@ -115,31 +115,29 @@ export class HousesService {
               }
 
               const houses = [];
-              for (const offer in offersData) {       
-                console.log(offersData[offer])         
-                // houses.push(
-                //   new offersModel(
-                //     offersData[1].userId,
-                //     offersData[0], //OfferId
-                //     offersData[1].contract,
-                //     offersData[1].title,
-                //     offersData[1].description,
-                //     offersData[1].price,
-                //     offersData[1].contact,
-                //     offersData[1].whatsapp,
-                //     offersData[1].location,
-                //     offersData[1].images,
-                //     (offersData[1].favorite = await this.getFavorite(
-                //       offersData[0]
-                //     ))
-                //   )
-                // );
+              for (const offer in offersData) {        
+                houses.push(
+                  new offersModel(
+                    offersData[offer][1].userId,
+                    offersData[offer][0], //OfferId
+                    offersData[offer][1].contract,
+                    offersData[offer][1].title,
+                    offersData[offer][1].description,
+                    offersData[offer][1].price,
+                    offersData[offer][1].contact,
+                    offersData[offer][1].whatsapp,
+                    offersData[offer][1].location,
+                    offersData[offer][1].images,
+                    (offersData[offer][1].favorite = await this.getFavorite(
+                      offersData[offer][0]
+                    ))
+                  )
+                );
               }
 
               return houses;
             }),
             tap(async (houses) => {
-              //console.log(houses)
               this._houses.next(await houses);
             })
           );
@@ -178,7 +176,6 @@ export class HousesService {
       map((housesData) => {
         for (let house in housesData) {
           if (house && housesData[house]['offerKey'] === offerKey) {
-            //console.log(housesData[house])
             return new offersModel(
               housesData[house]['userId'],
               housesData[house]['offerKey'],
