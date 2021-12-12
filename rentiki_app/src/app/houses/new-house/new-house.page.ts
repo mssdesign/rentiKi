@@ -41,6 +41,9 @@ export class NewHousePage implements OnInit {
       price: new FormControl(null, {
         updateOn: 'blur',
         validators: [Validators.required]
+      }),
+      whatsapp: new FormControl(null, {
+        updateOn: 'blur'
       })
     });
   }
@@ -62,11 +65,24 @@ export class NewHousePage implements OnInit {
     let value = price;
     value = value.replace(/\D/gi, '')
     this.price.nativeElement.value = `R$ ${value}`;
-    console.log(price)
   }
 
   onCreateOffer() {
-    console.log(this.form);
+    if (this.form.status !== "VALID") {
+      return;
+    }
+
+    this.housesService.addHouses(
+      this.form.value.contract,
+      this.form.value.title,
+      this.form.value.description,
+      this.form.value.price,
+      this.form.value.contact,
+      this.form.value.whatsapp,
+      this.form.value.location
+    )
+
+    //console.log(this.form.value);
   }
   
 }

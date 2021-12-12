@@ -81,6 +81,14 @@
 
       <ion-row>
         <ion-col>
+          <ion-list>
+            <!-- COLOCAR IMAGENS AQUI slides de imagens para importar -->
+          </ion-list>
+        </ion-col>
+      </ion-row>
+
+      <ion-row>
+        <ion-col>
           <ion-label>Telefone(s):</ion-label>
           <ion-list>
             <div>
@@ -92,11 +100,11 @@
                   (ionBlur)="maskNumber(tel.value)"
                   placeholder="(DDD) + Número"
                 ></ion-input>
-                <ion-icon name="add"></ion-icon>
               </ion-item>
               <div class="whatsappBtn">
                 <ion-checkbox
                   slot="start"
+                  formControlName="whatsapp"
                   style="margin-right: 5px"
                 ></ion-checkbox>
                 <ion-label>Esse número possui whatsapp</ion-label>

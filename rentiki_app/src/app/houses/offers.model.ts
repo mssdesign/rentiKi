@@ -13,3 +13,4 @@ export class offersModel {
         public favorite: boolean
     ) {}
 }
+

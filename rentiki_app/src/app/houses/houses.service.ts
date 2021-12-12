@@ -1,7 +1,8 @@
+import { AuthService } from './../auth/auth.service';
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { offersModel } from './offers.model';
-import { catchError, map, take, tap } from 'rxjs/operators';
+import { catchError, map, switchMap, take, tap } from 'rxjs/operators';
 import { BehaviorSubject } from 'rxjs';
 import { Storage } from '@ionic/storage-angular';
 
@@ -14,12 +15,69 @@ export class HousesService {
 
   dataUrl = 'http://localhost:3001/offers';
 
-  constructor(private http: HttpClient, private storage: Storage) {
+  constructor(private http: HttpClient, private storage: Storage, private authService: AuthService) {
     this.saveLocal(); //Executando função que cria base local de dados
   }
 
+  images = [
+    "https://media.gettyimages.com/photos/self-build-country-home-morning-mist-picture-id680520047?s=2048x2048",
+    "https://imagens-revista.vivadecora.com.br/uploads/2021/03/1-decora%C3%A7%C3%A3o-moderna-para-quarto-feminino-pequeno-cinza-com-m%C3%B3veis-planejados-Foto-Sua-Decora%C3%A7%C3%A3o.jpg",
+    "https://www.italinea.com.br/antigo/wp-content/uploads/2019/12/face_2801-internas_3.png",
+    "https://revistanews.com.br/wp-content/uploads/2018/08/quarto-infantil.jpg",
+    "https://www.plantapronta.com.br/projetos/154/21.jpg"
+  ]
+
   get houses() {
     return this._houses.asObservable();
+  }
+
+  addHouses(
+    contract: string,
+    title: string,
+    description: string,
+    price: string,
+    contact: string,
+    whatsapp: boolean,
+    location: string
+  ) {
+    let fetchedUserId: string;
+    let newOffer: offersModel;
+
+    return this.authService.userId.pipe(take(1), switchMap((userId) => {
+      fetchedUserId = userId;
+      return this.authService.token;
+    }),
+    take(1),
+    switchMap((token) => {
+      if (!fetchedUserId) {
+        throw new Error('Usuário não encontrado')
+      }
+
+      newOffer = new offersModel(
+        fetchedUserId,
+        Math.random().toString(),
+        contract,
+        title,
+        description,
+        price,
+        contact,
+        whatsapp,
+        location,
+        this.images,
+        false
+      )
+
+      return this.http.post<{ uid: string }>(
+        `https://rentiki-default-rtdb.firebaseio.com/rentiki.json?auth=${token}`,
+        {
+          ...newOffer
+        }
+      );
+    }),
+      take(1),
+      tap((data) => console.log(data))
+    );
+    
   }
 
   fetchHouses() {
