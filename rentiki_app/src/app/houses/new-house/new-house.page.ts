@@ -72,7 +72,7 @@ export class NewHousePage implements OnInit {
       return;
     }
 
-    this.housesService.addHouses(
+    return this.housesService.addHouses(
       this.form.value.contract,
       this.form.value.title,
       this.form.value.description,
@@ -80,7 +80,7 @@ export class NewHousePage implements OnInit {
       this.form.value.contact,
       this.form.value.whatsapp,
       this.form.value.location
-    )
+    ).subscribe();
 
     //console.log(this.form.value);
   }

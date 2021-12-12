@@ -49,6 +49,7 @@ export class HousesService {
     }),
     take(1),
     switchMap((token) => {
+      console.log('adding')
       if (!fetchedUserId) {
         throw new Error('Usuário não encontrado')
       }
@@ -68,7 +69,7 @@ export class HousesService {
       )
 
       return this.http.post<{ uid: string }>(
-        `https://rentiki-default-rtdb.firebaseio.com/rentiki.json?auth=${token}`,
+        `https://rentiki-default-rtdb.firebaseio.com/offers.json?auth=${token}`,
         {
           ...newOffer
         }
