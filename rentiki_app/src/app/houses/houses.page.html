@@ -23,7 +23,7 @@
   <ion-grid>
     <ion-row>
       <ion-col>
-        <ion-list *ngIf="!isLoading && housesLoadedShow && housesLoadedShow.length > 0">
+        <ion-list *ngIf="housesLoadedShow && housesLoadedShow.length > 0">
           <ion-item-sliding *ngFor="let houses of housesLoadedShow">
             <ion-card>
               <ion-card-header class="ion-text-center"><ion-label class="title">{{ houses.title }}</ion-label><ion-icon [name]="houses.favorite === false ? 'heart-outline' : 'heart'" [style.color]="houses.favorite === false ? '' : 'red'" (click)="onFavoriteToggle(houses.offerKey)" class="favorite"></ion-icon></ion-card-header>              

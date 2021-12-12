@@ -9,7 +9,6 @@ import { offersModel } from './offers.model';
   styleUrls: ['./houses.page.scss'],
 })
 export class HousesPage implements OnInit, OnDestroy {
-  isLoading = false;
   housesLoadedShow: offersModel[];
   housesLoaded: offersModel[];
   housesRent: offersModel[];
@@ -26,10 +25,7 @@ export class HousesPage implements OnInit, OnDestroy {
   }
 
   ionViewWillEnter() {
-    this.isLoading = true;
-    this.housesService.fetchHouses().subscribe(() => {
-      this.isLoading = false;
-    });
+    this.housesService.fetchHouses().subscribe();
   }
 
   filterRent() {

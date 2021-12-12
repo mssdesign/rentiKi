@@ -106,7 +106,7 @@ export class HousesService {
           )
           .pipe(
             take(1),
-            switchMap((data) => {
+            switchMap(async (data) => {
               const offersData = [];
               for (const [userId, offers] of Object.entries(data)) {
                 for (const [offerId, data] of Object.entries(offers)) {
@@ -114,31 +114,32 @@ export class HousesService {
                 }
               }
 
-              return offersData;
-            }),
-            map(async (offersData) => {
               const houses = [];
-              houses.push(
-                new offersModel(
-                  offersData[1].userId,
-                  offersData[0], //OfferId
-                  offersData[1].contract,
-                  offersData[1].title,
-                  offersData[1].description,
-                  offersData[1].price,
-                  offersData[1].contact,
-                  offersData[1].whatsapp,
-                  offersData[1].location,
-                  offersData[1].images,
-                  (offersData[1].favorite = await this.getFavorite(
-                    offersData[0]
-                  ))
-                )
-              );
+              for (const offer in offersData) {       
+                console.log(offersData[offer])         
+                // houses.push(
+                //   new offersModel(
+                //     offersData[1].userId,
+                //     offersData[0], //OfferId
+                //     offersData[1].contract,
+                //     offersData[1].title,
+                //     offersData[1].description,
+                //     offersData[1].price,
+                //     offersData[1].contact,
+                //     offersData[1].whatsapp,
+                //     offersData[1].location,
+                //     offersData[1].images,
+                //     (offersData[1].favorite = await this.getFavorite(
+                //       offersData[0]
+                //     ))
+                //   )
+                // );
+              }
 
               return houses;
             }),
             tap(async (houses) => {
+              //console.log(houses)
               this._houses.next(await houses);
             })
           );
