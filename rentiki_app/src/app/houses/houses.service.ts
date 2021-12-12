@@ -13,8 +13,6 @@ export class HousesService {
   private _houses = new BehaviorSubject<offersModel[]>([]);
   private _storage: Storage | null = null;
 
-  dataUrl = 'http://localhost:3001/offers';
-
   constructor(
     private http: HttpClient,
     private storage: Storage,
@@ -23,7 +21,8 @@ export class HousesService {
     this.saveLocal(); //Executando função que cria base local de dados
   }
 
-  images = [  //Apagar
+  images = [
+    //Apagar
     'https://media.gettyimages.com/photos/self-build-country-home-morning-mist-picture-id680520047?s=2048x2048',
     'https://imagens-revista.vivadecora.com.br/uploads/2021/03/1-decora%C3%A7%C3%A3o-moderna-para-quarto-feminino-pequeno-cinza-com-m%C3%B3veis-planejados-Foto-Sua-Decora%C3%A7%C3%A3o.jpg',
     'https://www.italinea.com.br/antigo/wp-content/uploads/2019/12/face_2801-internas_3.png',
@@ -35,6 +34,7 @@ export class HousesService {
     return this._houses.asObservable();
   }
 
+  //Enviando anúncios para firebase
   addHouses(
     contract: string,
     title: string,
@@ -97,34 +97,51 @@ export class HousesService {
 
   //Pegando dados do servidor
   fetchHouses() {
-    return this.http.get<any>(this.dataUrl).pipe(
+    return this.authService.token.pipe(
       take(1),
-      map(async (offersData) => {
-        const houses = [];
-        for (const key in offersData) {
-          houses.push(
-            new offersModel(
-              offersData[key].userId,
-              offersData[key].offerKey,
-              offersData[key].contract,
-              offersData[key].title,
-              offersData[key].description,
-              offersData[key].price,
-              offersData[key].whatsapp,
-              offersData[key].contact,
-              offersData[key].location,
-              offersData[key].images,
-              (offersData[key].favorite = await this.getFavorite(
-                offersData[key].offerKey
-              ))
-            )
+      switchMap((token) => {
+        return this.http
+          .get<any>(
+            `https://rentiki-default-rtdb.firebaseio.com/offers.json?auth=${token}`
+          )
+          .pipe(
+            take(1),
+            switchMap((data) => {
+              const offersData = [];
+              for (const [userId, offers] of Object.entries(data)) {
+                for (const [offerId, data] of Object.entries(offers)) {
+                  offersData.push([offerId, data]);
+                }
+              }
+
+              return offersData;
+            }),
+            map(async (offersData) => {
+              const houses = [];
+              houses.push(
+                new offersModel(
+                  offersData[1].userId,
+                  offersData[0], //OfferId
+                  offersData[1].contract,
+                  offersData[1].title,
+                  offersData[1].description,
+                  offersData[1].price,
+                  offersData[1].contact,
+                  offersData[1].whatsapp,
+                  offersData[1].location,
+                  offersData[1].images,
+                  (offersData[1].favorite = await this.getFavorite(
+                    offersData[0]
+                  ))
+                )
+              );
+
+              return houses;
+            }),
+            tap(async (houses) => {
+              this._houses.next(await houses);
+            })
           );
-        }
-        return houses;
-      }),
-      tap(async (houses) => {
-        this._houses.next(await houses);
-        //console.log(houses)
       })
     );
   }

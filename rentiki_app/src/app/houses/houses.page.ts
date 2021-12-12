@@ -35,7 +35,7 @@ export class HousesPage implements OnInit, OnDestroy {
   filterRent() {
     if (this.housesLoaded) {
       this.housesRent = this.housesLoaded.filter((offersModel) => {
-        if (offersModel['contract'] === 'aluguel') {
+        if (offersModel['contract'] === 'rent') {
           return true;
         }
       });
@@ -45,7 +45,7 @@ export class HousesPage implements OnInit, OnDestroy {
   filterSell() {
     if (this.housesLoaded) {
       this.housesSell = this.housesLoaded.filter((offersModel) => {
-        if (offersModel['contract'] === 'venda') {
+        if (offersModel['contract'] === 'sell') {
           return true;
         }
       });
