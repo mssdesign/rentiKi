@@ -14,7 +14,7 @@
         <ion-col>
           <ion-label>Título do Anúncio:</ion-label>
           <ion-item class="offerTextInput">
-            <ion-input type="text" formControlName="title"></ion-input>
+            <ion-input type="text" formControlName="title" maxlength="35"></ion-input>
           </ion-item>
         </ion-col>
       </ion-row>
@@ -27,6 +27,7 @@
               type="text"
               formControlName="description"
               rows="5"
+              maxlength="500"
               placeholder="Descreva seu imóvel aqui."
             ></ion-textarea>
           </ion-item>
@@ -37,7 +38,7 @@
         <ion-col>
           <ion-label>Endereço</ion-label>
           <ion-item class="offerTextInput">
-            <ion-input type="text" formControlName="location"></ion-input>
+            <ion-input type="text" formControlName="location" maxlength="50"></ion-input>
           </ion-item>
         </ion-col>
       </ion-row>
@@ -71,6 +72,7 @@
           <ion-item class="offerTextInput">
             <ion-input placeholder="R$:"
             #price
+            maxlength="11"
             formControlName="price"
             (keyup.enter)="maskPrice(price.value)"
             (ionBlur)="maskPrice(price.value)"
@@ -96,6 +98,7 @@
                 <ion-input
                   formControlName="contact"
                   #tel
+                  maxlength="11"
                   (keyup.enter)="maskNumber(tel.value)"
                   (ionBlur)="maskNumber(tel.value)"
                   placeholder="(DDD) + Número"

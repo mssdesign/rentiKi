@@ -1,6 +1,7 @@
 import { HousesService } from './../houses.service';
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-new-house',
@@ -14,7 +15,7 @@ export class NewHousePage implements OnInit {
   radioGroupValue: string = 'sell';
   whatsappNum: number;
 
-  constructor(private housesService: HousesService) {}
+  constructor(private housesService: HousesService, private router: Router) {}
 
   ngOnInit() {
     this.form = new FormGroup({
@@ -33,18 +34,18 @@ export class NewHousePage implements OnInit {
       contact: new FormControl(null, {
         updateOn: 'blur',
         validators: [Validators.required],
-      }),      
+      }),
       location: new FormControl(null, {
         updateOn: 'blur',
         validators: [Validators.required],
       }),
       price: new FormControl(null, {
-        updateOn: 'blur',
-        validators: [Validators.required]
+        updateOn: 'submit',
+        validators: [Validators.required],
       }),
       whatsapp: new FormControl(null, {
-        updateOn: 'blur'
-      })
+        updateOn: 'blur',
+      }),
     });
   }
 
@@ -63,26 +64,28 @@ export class NewHousePage implements OnInit {
 
   maskPrice(price: any) {
     let value = price;
-    value = value.replace(/\D/gi, '')
+    value = value.replace(/\D/gi, '');
     this.price.nativeElement.value = `R$ ${value}`;
   }
 
   onCreateOffer() {
-    if (this.form.status !== "VALID") {
+    if (this.form.status !== 'VALID') {
       return;
     }
 
-    return this.housesService.addHouses(
-      this.form.value.contract,
-      this.form.value.title,
-      this.form.value.description,
-      this.form.value.price,
-      this.form.value.contact,
-      this.form.value.whatsapp,
-      this.form.value.location
-    ).subscribe();
-
-    //console.log(this.form.value);
+    return this.housesService
+      .addHouses(
+        this.form.value.contract,
+        this.form.value.title,
+        this.form.value.description,
+        this.form.value.price,
+        this.form.value.contact,
+        this.form.value.whatsapp,
+        this.form.value.location
+      )
+      .subscribe(() => {
+        this.form.reset();
+        this.router.navigateByUrl('/houses');
+      });
   }
-  
 }
