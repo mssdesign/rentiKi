@@ -24,9 +24,8 @@
 
                 <ion-label class="price">{{ houses.price | currency: 'BRL' }}</ion-label>
 
-                <ion-button [routerLink]="['/', 'houses', 'offers', houses.offerKey]">
+                <ion-button [routerLink]="['/', 'houses', 'offers', houses.userId, houses.offerKey]">
                   Mais detalhes
-                  <ion-icon name="chevron-forward-outline"></ion-icon>
                 </ion-button>                
               </ion-buttons>
 
