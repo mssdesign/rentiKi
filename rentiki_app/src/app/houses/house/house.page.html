@@ -3,10 +3,29 @@
     <ion-buttons slot="start">
       <ion-back-button defaultHref="/houses"></ion-back-button>
     </ion-buttons>
-    <ion-title>{{ useOffer?.title }}</ion-title>
+    <ion-title>{{ isLoading ? 'Carregando...' : useOffer?.title }}</ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
-  <ion-label>{{ useOffer?.favorite }}</ion-label>
+
+  <div class="ion-text-center" *ngIf="isLoading">
+    <ion-spinner color="primary"></ion-spinner>
+  </div>
+
+  <ion-grid *ngIf="!isLoading">
+
+    <ion-row>
+      <ion-col>
+        <app-slide [houses]="useOffer"></app-slide>
+      </ion-col>
+    </ion-row>
+
+    <ion-row>
+      <ion-col>
+        <ion-label>{{ useOffer?.description }}</ion-label>
+      </ion-col>
+    </ion-row>
+
+  </ion-grid>
 </ion-content>

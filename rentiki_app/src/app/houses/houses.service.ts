@@ -170,28 +170,15 @@ export class HousesService {
   }
 
   //Armazenando os dados do fetching
-  getHouse(offerKey: string) {
-    return this.houses.pipe(
+  getHouse(userId: string, offerKey: string) {
+    return this.authService.token.pipe(
       take(1),
-      map((housesData) => {
-        for (let house in housesData) {
-          if (house && housesData[house]['offerKey'] === offerKey) {
-            return new offersModel(
-              housesData[house]['userId'],
-              housesData[house]['offerKey'],
-              housesData[house]['contract'],
-              housesData[house]['title'],
-              housesData[house]['description'],
-              housesData[house]['price'],
-              housesData[house]['contact'],
-              housesData[house]['whatsapp'],
-              housesData[house]['location'],
-              housesData[house]['images'],
-              housesData[house]['favorite']
-            );
-          }
-        }
+      switchMap((token) => {
+        return this.http.get<any>(
+          `https://rentiki-default-rtdb.firebaseio.com/offers/${userId}/${offerKey}.json?auth=${token}`
+        )
       })
     );
   }
+  
 }

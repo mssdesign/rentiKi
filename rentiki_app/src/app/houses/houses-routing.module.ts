@@ -20,8 +20,13 @@ const routes: Routes = [
     path: 'offers',
     children: [
       {
-        path: ':houseOfferKey',
-        loadChildren: () => import('./house/house.module').then( m => m.HousePageModule)
+        path: ':userOfferId',
+        children: [
+          {
+            path: ':offerKey',            
+            loadChildren: () => import('./house/house.module').then( m => m.HousePageModule),
+          }
+        ]
       }
     ]
   },
