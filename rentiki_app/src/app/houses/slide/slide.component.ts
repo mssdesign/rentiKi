@@ -1,9 +1,8 @@
 import { offersModel } from '../offers.model';
-import { Component, Input, OnInit, ViewChild } from '@angular/core';
-import SwiperCore, { Swiper, Virtual, SwiperOptions, Pagination, Navigation } from 'swiper';
-import { SwiperComponent } from 'swiper/angular';
+import { Component, Input, OnInit } from '@angular/core';
+import SwiperCore, { SwiperOptions, Pagination, Navigation } from 'swiper';
 
-SwiperCore.use([Pagination, Navigation, Virtual]);
+SwiperCore.use([Pagination, Navigation]);
 
 @Component({
   selector: 'app-slide',
@@ -12,7 +11,6 @@ SwiperCore.use([Pagination, Navigation, Virtual]);
 })
 export class SlideComponent implements OnInit {
   @Input() houses: offersModel;
-  @ViewChild('swiper', { static: false }) swiper?: SwiperComponent;
 
   constructor() { }
 
@@ -21,17 +19,12 @@ export class SlideComponent implements OnInit {
   config: SwiperOptions = {
     slidesPerView: 1,
     spaceBetween: 5,
-    pagination: { clickable: true },
-    scrollbar: { draggable: true },
-    navigation: true
+    pagination: true,
+    scrollbar: true,
+    navigation: true, 
+    loop: true,
   };
 
-  slideNext() {
-    this.swiper.swiperRef.slideNext(500);
-  }
-
-  slidePrev() {
-    this.swiper.swiperRef.slidePrev(500);
-  }
-
 }
+
+//Para fazer funcionar o pagination e o navigation foi preciso importar stilos pro global.scss

@@ -1,18 +1,5 @@
-<swiper
-  [config]="config"
-  [loop]="true"
-  [pagination]="true"
-  #swiper
->
+<swiper [config]="config">
   <ng-template swiperSlide *ngFor="let imagePic of houses.images">
-    <div class="swiper-button-prev" (click)="slidePrev()">
-      <ion-icon name="chevron-back-outline"></ion-icon>
-    </div>
-    
     <ion-img [src]="imagePic"></ion-img>
-
-    <div class="swiper-button-next" (click)="slideNext()">
-      <ion-icon name="chevron-forward-outline"></ion-icon>
-    </div>    
   </ng-template>
 </swiper>
