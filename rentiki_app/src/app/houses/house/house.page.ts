@@ -15,6 +15,7 @@ export class HousePage implements OnInit, OnDestroy {
   useOffer: any;
   private offerSub: Subscription;
   isLoading = false;
+  telNum: string;
 
   constructor(
     private route: ActivatedRoute,
@@ -38,9 +39,18 @@ export class HousePage implements OnInit, OnDestroy {
 
       this.housesService.getHouse(userOfferId, offerKey).subscribe((offer) => {
         this.useOffer = offer;
+        this.maskPhone(offer.contact);
         this.isLoading = false;
       });
     });
+  }
+
+  maskPhone(phone: string) {
+    let number = phone;
+    number = number.replace(/\D/gi, ''); //Retirando caracteres que não são números    
+    number = number.replace(/^(\d{2})(\d)/g, '($1) $2'); //Separando DDD do resto do número com parênteses
+    number = number.replace(/(\d)(\d{4})$/, '$1-$2'); //Colocando hífen entre os 4 ou 5 primeiros números
+    this.telNum = number;
   }
 
   ngOnDestroy() {

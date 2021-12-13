@@ -1,0 +1,78 @@
+.description {
+    display: grid;
+    font-size: 1.2em;
+    font-weight: bold;
+    color: var(--ion-color-medium-shade);
+    height: 100px;
+
+    .description-text {
+        font-size: 0.8em;
+        font-weight: lighter;
+        color: var(--ion-color-primary);
+    }
+
+    &::after {
+        content: '';
+        position: absolute;
+        left: 1em;
+        bottom: 0;        
+        height: 1px;
+        width: 91%;
+        border-bottom: 1px solid var(--ion-color-primary);
+    }
+}
+
+.contato {
+    display: grid;
+    grid-template-columns: [c1] 50% [c2] 50%;
+    font-size: 1.2em;
+    position: relative;
+    font-weight: bold;
+    color: var(--ion-color-medium-shade);
+    height: 100px;
+
+    .number {
+        font-size: 0.8em;
+        grid-column: c1;
+        font-weight: lighter;
+        color: var(--ion-color-primary);
+    }
+
+    .zap-text {
+        font-size: 0.5em;
+        grid-column: c2;
+        position: absolute;
+        right: 12px;
+        bottom: 5px;
+        color: var(--ion-color-medium-shade);
+    }
+
+    &::after {
+        content: '';
+        position: absolute;
+        left: 1em;
+        bottom: 0;        
+        height: 1px;
+        width: 91%;
+        border-bottom: 1px solid var(--ion-color-primary);
+    }
+}
+
+.whatsapp {
+    position: absolute;
+    color: #fff;
+    background-color: #4FE261;
+    font-size: 50px;
+    bottom: 10px;
+    right: 10px;
+    border-radius: 50%;
+    height: 55px;
+    width: 55px;
+
+    ion-icon {
+        position: absolute;
+        right: 0;
+        bottom: 5px;
+    }
+}
+
