@@ -29,13 +29,11 @@
               <ion-card-header class="ion-text-center"><ion-label class="title">{{ houses.title }}</ion-label><ion-icon [name]="houses.favorite === false ? 'heart-outline' : 'heart'" [style.color]="houses.favorite === false ? '' : 'red'" (click)="onFavoriteToggle(houses.offerKey)" class="favorite"></ion-icon></ion-card-header>              
 
               <ion-card-content>
-                <app-slide [houses]="houses"></app-slide>
+                <app-slide [houses]="houses"></app-slide>                
               </ion-card-content>
 
               <ion-buttons>
-
                 <ion-label class="price">{{ houses.price | currency: 'BRL' }}</ion-label>
-
                 <ion-button [routerLink]="['/', 'houses', 'offers', houses.userId, houses.offerKey]">
                   Mais detalhes
                   <ion-icon name="chevron-forward-outline"></ion-icon>

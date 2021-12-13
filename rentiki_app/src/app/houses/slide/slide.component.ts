@@ -1,6 +1,9 @@
 import { offersModel } from '../offers.model';
-import { Component, Input, OnInit } from '@angular/core';
-import SwiperCore, { SwiperOptions } from 'swiper';
+import { Component, Input, OnInit, ViewChild } from '@angular/core';
+import SwiperCore, { Swiper, Virtual, SwiperOptions, Pagination, Navigation } from 'swiper';
+import { SwiperComponent } from 'swiper/angular';
+
+SwiperCore.use([Pagination, Navigation, Virtual]);
 
 @Component({
   selector: 'app-slide',
@@ -9,6 +12,7 @@ import SwiperCore, { SwiperOptions } from 'swiper';
 })
 export class SlideComponent implements OnInit {
   @Input() houses: offersModel;
+  @ViewChild('swiper', { static: false }) swiper?: SwiperComponent;
 
   constructor() { }
 
@@ -17,16 +21,17 @@ export class SlideComponent implements OnInit {
   config: SwiperOptions = {
     slidesPerView: 1,
     spaceBetween: 5,
-    navigation: false,
     pagination: { clickable: true },
     scrollbar: { draggable: true },
+    navigation: true
   };
-  
-  onSwiper(swiper) {
-    //console.log(swiper);
+
+  slideNext() {
+    this.swiper.swiperRef.slideNext(500);
   }
-  onSlideChange() {
-    //console.log('slide change');
+
+  slidePrev() {
+    this.swiper.swiperRef.slidePrev(500);
   }
 
 }
