@@ -10,7 +10,7 @@
 <ion-content>
   <form [formGroup]="form">
     <ion-grid>
-      <ion-row>
+      <ion-row style="margin-top: 15px;">
         <ion-col>
           <ion-label>Título do Anúncio:</ion-label>
           <ion-item class="offerTextInput">
@@ -82,9 +82,14 @@
       </ion-row>
 
       <ion-row>
+        <ion-label>Adicionar Imagens:</ion-label>
         <ion-col>
-          <ion-list>
-            <!-- COLOCAR IMAGENS AQUI slides de imagens para importar -->
+          <ion-list class="image-row">
+            <div class="image">+</div>
+            <div class="image">+</div>
+            <div class="image">+</div>
+            <div class="image">+</div>
+            <div class="image">+</div>
           </ion-list>
         </ion-col>
       </ion-row>
@@ -117,7 +122,7 @@
         </ion-col>
       </ion-row>
 
-      <ion-row>
+      <ion-row style="margin-top: 35px;">
         <ion-col>
           <ion-buttons style="justify-content: center">
             <ion-button type="submit" (click)="onCreateOffer()" id="submitBTN"
