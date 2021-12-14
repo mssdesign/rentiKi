@@ -4,24 +4,6 @@ ion-row {
 
 .image-row {
     display: flex;
-
-    .image {
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        border: 1px dashed var(--ion-color-medium-shade);
-        margin: 0 5px 0 5px;
-        height: 70px;
-        width: 70px;
-        position: relative;
-        overflow: hidden;
-    }
-
-    input {
-        position: absolute;
-        opacity: 0;
-    }
-
 }
 
 .offerTextInput {
