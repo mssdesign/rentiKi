@@ -1,3 +1,6 @@
+import { offersModel } from './../houses/offers.model';
+import { take, tap, map } from 'rxjs/operators';
+import { HousesService } from './../houses/houses.service';
 import { Subscription } from 'rxjs';
 import { userModel } from './../auth/users.model';
 import { AuthService } from './../auth/auth.service';
@@ -9,25 +12,25 @@ import { Component, OnInit, OnDestroy } from '@angular/core';
   styleUrls: ['./profile.page.scss'],
 })
 export class ProfilePage implements OnInit, OnDestroy {
-  usersLoaded: userModel[];
-  usersSub: Subscription;
+  offersLoaded: offersModel[];
+  userOffersSub: Subscription;
 
-  constructor(private auth: AuthService) { }
+  constructor(
+    private auth: AuthService,
+    private housesService: HousesService
+  ) {}
 
   ngOnInit() {
-    this.usersSub = this.auth.users.subscribe((users) => {
-      this.usersLoaded = users;
+    this.userOffersSub = this.auth.userId.subscribe(userId => {
+      this.housesService.getMyOffers(userId).subscribe(data => {
+        this.offersLoaded = data;
+      });
     })
   }
 
-  onClick() {
-    this.auth.fetchUsers().subscribe();
-  }
-
   ngOnDestroy() {
-    if (this.usersSub) {
-      this.usersSub.unsubscribe();
+    if (this.userOffersSub) {
+      this.userOffersSub.unsubscribe();
     }
   }
-
 }

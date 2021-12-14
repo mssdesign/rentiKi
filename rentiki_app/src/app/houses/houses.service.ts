@@ -169,6 +169,46 @@ export class HousesService {
     }
   }
 
+  getMyOffers(userId: string) {
+    return this.authService.token.pipe(
+      take(1),
+      switchMap((token) => {
+        return this.http.get<any>(
+          `https://rentiki-default-rtdb.firebaseio.com/offers/${userId}.json?auth=${token}`
+        ).pipe(
+          take(1),
+          switchMap(async (offerData) => {
+            const userOffers = [];
+            for (const [offerId, data] of Object.entries(offerData)) {
+              userOffers.push([offerId, data])
+            }
+
+            const offers = [];
+            for (const offer in userOffers) {
+              offers.push(
+                new offersModel(
+                  userOffers[offer][1].userId,
+                  userOffers[offer][0],
+                  userOffers[offer][1].contract,
+                  userOffers[offer][1].title,
+                  userOffers[offer][1].description,
+                  userOffers[offer][1].price,
+                  userOffers[offer][1].contact,
+                  userOffers[offer][1].whatsapp,
+                  userOffers[offer][1].location,
+                  userOffers[offer][1].images,
+                  userOffers[offer][1].favorite
+                )
+              )
+            }
+
+            return offers;
+          })
+        )
+      })
+    );
+  }
+
   //Armazenando os dados do fetching
   getHouse(userId: string, offerKey: string) {
     return this.authService.token.pipe(

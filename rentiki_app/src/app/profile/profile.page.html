@@ -8,8 +8,23 @@
 </ion-header>
 
 <ion-content>
-  <ion-label>Precisa terminar autenticação primeiro</ion-label>
-  <ion-buttons>
-    <ion-button (click)=" onClick()">Teste</ion-button>
-  </ion-buttons>
+  <ion-list>
+    <ion-item-sliding *ngFor="let offer of offersLoaded">
+      <ion-item>
+
+        <ion-avatar slot="start">
+          <img [src]="offer.images[0]">
+        </ion-avatar>
+
+        <ion-label>{{ offer.title }}</ion-label>
+
+        <ion-buttons slot="end">
+          <ion-button>
+            <ion-icon name="close-outline" slot="icon-only" style="color: red;"></ion-icon>
+          </ion-button>
+        </ion-buttons>
+
+      </ion-item>
+    </ion-item-sliding>
+  </ion-list>
 </ion-content>
