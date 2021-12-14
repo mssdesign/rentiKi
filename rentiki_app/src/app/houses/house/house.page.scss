@@ -60,19 +60,29 @@
 
 .whatsapp {
     position: absolute;
+    display: flex;
     color: #fff;
     background-color: #4FE261;
-    font-size: 50px;
+    font-size: 40px;
     bottom: 10px;
     right: 10px;
-    border-radius: 50%;
-    height: 55px;
-    width: 55px;
+    height: 45px;
+    width: 190px;
+    border-radius: 15px;
+
+    ion-label {
+        position: absolute;
+        top: 30%;
+        left: 5%;
+        font-size: 0.35em;
+        z-index: 1;
+        color: #fff;
+    }
 
     ion-icon {
         position: absolute;
         right: 0;
-        bottom: 5px;
+        bottom: 3px;
     }
 }
 

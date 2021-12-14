@@ -8,44 +8,66 @@
 </ion-header>
 
 <ion-content>
-
   <div class="ion-text-center" *ngIf="isLoading">
     <ion-spinner color="primary"></ion-spinner>
   </div>
 
   <ion-grid *ngIf="!isLoading">
-
     <ion-row>
       <ion-col>
-        <app-slide [houses]="useOffer"></app-slide>      
+        <app-slide [houses]="useOffer"></app-slide>
       </ion-col>
     </ion-row>
 
-    <ion-row style="margin-top: 30px;">
+    <ion-row style="margin-top: 30px">
       <ion-col class="description">
         <ion-label>📝 Descrição do imóvel:</ion-label>
-        <ion-label class="description-text">{{ useOffer?.description }}</ion-label>
+        <ion-label class="description-text"
+          >{{ useOffer?.description }}</ion-label
+        >
       </ion-col>
     </ion-row>
 
-    <ion-row style="margin-top: 30px;">
+    <ion-row style="margin-top: 30px">
       <ion-col class="description">
         <ion-label>🏠 Endereço:</ion-label>
         <ion-label class="description-text">{{ useOffer?.location }}</ion-label>
       </ion-col>
     </ion-row>
 
-    <ion-row style="margin-top: 30px;">
+    <ion-row style="margin-top: 30px">
       <ion-col class="contato">
         <ion-label>📞 Contato:</ion-label>
         <ion-label class="number">{{ telNum }}</ion-label>
-        <ion-label class="zap-text" *ngIf="useOffer.whatsapp">Esse número possui whatsapp.</ion-label>
+        <ion-label class="zap-text" *ngIf="useOffer.whatsapp"
+          >Esse número possui whatsapp.</ion-label
+        >
       </ion-col>
     </ion-row>
 
-    <div class="whatsapp" *ngIf="useOffer.whatsapp">
-      <ion-icon name="logo-whatsapp"></ion-icon>
-    </div>
+    <ion-row style="margin-top: 30px">
+      <ion-col class="description">
+        <ion-label
+          >💰 {{ useOffer.contract === 'sell' ? 'Preço do imóvel' : 'Valor do
+          aluguel' }}</ion-label
+        >
+        <ion-label class="description-text"
+          >R$ {{ useOffer.price }},00</ion-label
+        >
+      </ion-col>
+    </ion-row>
 
+    <a
+      [href]="whatsappLink"
+      target="blank"
+      class="whatsapp"
+      *ngIf="useOffer.whatsapp"
+      (click)="callZap(useOffer.contact)"
+    >
+      <div>
+        <ion-label>Chamar no whatsapp</ion-label>
+        <ion-icon name="logo-whatsapp"></ion-icon>
+      </div>
+    </a>
   </ion-grid>
 </ion-content>
