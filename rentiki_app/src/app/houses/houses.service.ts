@@ -11,6 +11,7 @@ import { Storage } from '@ionic/storage-angular';
 })
 export class HousesService {
   private _houses = new BehaviorSubject<offersModel[]>([]);
+  private _userOffers = new BehaviorSubject<offersModel[]>([]);
   private _storage: Storage | null = null;
 
   constructor(
@@ -32,6 +33,10 @@ export class HousesService {
 
   get houses() {
     return this._houses.asObservable();
+  }
+
+  get userOffers() {
+    return this._userOffers.asObservable();
   }
 
   //Enviando anúncios para firebase
@@ -203,8 +208,29 @@ export class HousesService {
             }
 
             return offers;
+          }),
+          tap(offers => {
+            this._userOffers.next(offers);
           })
         )
+      })
+    );
+  }
+
+  deleteOffer(userId: string, offerKey: string) {
+    return this.authService.token.pipe(
+      take(1),
+      switchMap((token) => {
+        return this.http.delete<any>(
+          `https://rentiki-default-rtdb.firebaseio.com/offers/${userId}/${offerKey}.json?auth=${token}`
+        );
+      }),
+      switchMap(() => {
+        return this.userOffers;
+      }),
+      take(1),
+      tap(userOffers => {
+        this._userOffers.next(userOffers.filter(offer => offer.offerKey !== offerKey))
       })
     );
   }

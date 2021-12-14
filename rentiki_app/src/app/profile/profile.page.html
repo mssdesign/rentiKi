@@ -18,7 +18,7 @@
 
         <ion-label>{{ offer.title }}</ion-label>
 
-        <ion-buttons slot="end">
+        <ion-buttons slot="end" (click)="OnDeleteOffer(offer.userId, offer.offerKey)">
           <ion-button>
             <ion-icon name="close-outline" slot="icon-only" style="color: red;"></ion-icon>
           </ion-button>

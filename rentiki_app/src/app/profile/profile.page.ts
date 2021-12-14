@@ -1,8 +1,6 @@
 import { offersModel } from './../houses/offers.model';
-import { take, tap, map } from 'rxjs/operators';
 import { HousesService } from './../houses/houses.service';
 import { Subscription } from 'rxjs';
-import { userModel } from './../auth/users.model';
 import { AuthService } from './../auth/auth.service';
 import { Component, OnInit, OnDestroy } from '@angular/core';
 
@@ -21,11 +19,16 @@ export class ProfilePage implements OnInit, OnDestroy {
   ) {}
 
   ngOnInit() {
-    this.userOffersSub = this.auth.userId.subscribe(userId => {
-      this.housesService.getMyOffers(userId).subscribe(data => {
+    this.userOffersSub = this.auth.userId.subscribe((userId) => {
+      this.housesService.getMyOffers(userId).subscribe();
+      this.housesService.userOffers.subscribe((data) => {
         this.offersLoaded = data;
       });
-    })
+    });
+  }
+
+  OnDeleteOffer(userId: string, offerKey: string) {
+    this.housesService.deleteOffer(userId, offerKey).subscribe();
   }
 
   ngOnDestroy() {
