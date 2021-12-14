@@ -41,7 +41,7 @@ export class HousePage implements OnInit, OnDestroy {
       this.housesService.getHouse(userOfferId, offerKey).subscribe((offer) => {
         this.useOffer = offer;
         this.maskPhone(offer.contact);
-        this.whatsappLink = `https://api.whatsapp.com/send?phone=${offer.contact}`
+        this.whatsappLink = `https://api.whatsapp.com/send?phone=+550${offer.contact}`
         this.isLoading = false;      
       });
     });
