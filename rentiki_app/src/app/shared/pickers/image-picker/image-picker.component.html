@@ -1,6 +1,7 @@
-<div class="image">
-  
-  +
-  <input type="file" accept="image/jpeg" />
+<div class="image" (click)="onPickImage()">
+  <img [src]="selectedImage" *ngIf="selectedImage && showPreview" style="width: 68px;
+  height: 70px;">
 
+  <span *ngIf="!selectedImage || !showPreview">+</span>
+  <input type="file" accept="image/jpeg" #filePicker *ngIf="usePicker" (change)="onFileChosen($event)"/>
 </div>
