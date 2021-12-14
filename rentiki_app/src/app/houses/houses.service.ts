@@ -174,6 +174,7 @@ export class HousesService {
     }
   }
 
+  //Pegando anúncios do usuário logado
   getMyOffers(userId: string) {
     return this.authService.token.pipe(
       take(1),
@@ -217,6 +218,7 @@ export class HousesService {
     );
   }
 
+  //Deletando anúncios do usuário logado
   deleteOffer(userId: string, offerKey: string) {
     return this.authService.token.pipe(
       take(1),
