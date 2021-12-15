@@ -90,7 +90,7 @@ export class NewHousePage implements OnInit {
   }
 
   onCreateOffer() {
-    if (this.form.status !== 'VALID') {
+    if (!this.form.valid) {
       return;
     }
 
@@ -127,4 +127,5 @@ export class NewHousePage implements OnInit {
     }
     this.form.patchValue({ image: imageFile });
   }
+
 }
