@@ -3,8 +3,11 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { offersModel } from './offers.model';
 import { catchError, map, switchMap, take, tap } from 'rxjs/operators';
-import { BehaviorSubject } from 'rxjs';
+import { BehaviorSubject, Observable } from 'rxjs';
 import { Storage } from '@ionic/storage-angular';
+import { Component } from '@angular/core';
+import { AngularFireStorage } from '@angular/fire/compat/storage';
+import { finalize } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root',
@@ -13,11 +16,15 @@ export class HousesService {
   private _houses = new BehaviorSubject<offersModel[]>([]);
   private _userOffers = new BehaviorSubject<offersModel[]>([]);
   private _storage: Storage | null = null;
+  uploadPercent: Observable<number>;  //teste
+  downloadURL: Observable<string>;  //teste
+  profileUrl: Observable<string | null>;  //teste
 
   constructor(
     private http: HttpClient,
     private storage: Storage,
-    private authService: AuthService
+    private authService: AuthService,
+    private fireStorage: AngularFireStorage
   ) {
     this.saveLocal(); //Executando função que cria base local de dados
   }
@@ -47,7 +54,8 @@ export class HousesService {
     price: string,
     contact: string,
     whatsapp: boolean,
-    location: string
+    location: string,
+    //images: string[],
   ) {
     let fetchedUserId: string;
     let newOffer: offersModel;
@@ -247,6 +255,42 @@ export class HousesService {
         )
       })
     );
+  }
+
+  //Instalei firebase tools
+  //Dei firebase init
+  //ng add @angular/fire
+  //Foram adicionados arquivos no app.module e nesse service conforme a documentação nos links abaixo
+  //https://github.com/angular/angularfire
+  //https://github.com/angular/angularfire/blob/master/docs/storage/storage.md
+  async uploadImages(images: File[]) {    
+    //console.log(images)
+    //Fazer função para retornar array com urls ao invés de images
+    const imageArray = images;
+    console.log('executando')
+
+    const filePath = 'rentiki_app\src\assets\shapes.svg'; //Caminho da pasta no dispositivo
+
+    const fileRef = this.fireStorage.ref(filePath)
+
+    const task = this.fireStorage.upload(filePath, imageArray);
+
+    this.uploadPercent = task.percentageChanges();
+
+    const ref = this.fireStorage.ref(filePath)
+
+    task.snapshotChanges().pipe(
+      finalize(async () => this.downloadURL = await fileRef.getDownloadURL())
+    )
+    .subscribe(async () => {
+      console.log(await ref.getDownloadURL().subscribe(url => console.log(url)))
+    });
+
+
+    //Já é possível enviar imagens e receber url com a estrutura acima
+    //? Como colocar várias imagens?
+    //? Onde está o caminho do arquivo?
+    //
   }
   
 }

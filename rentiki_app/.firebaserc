@@ -1,0 +1,14 @@
+{
+  "projects": {
+    "default": "rentiki"
+  },
+  "targets": {
+    "rentiki": {
+      "hosting": {
+        "app": [
+          "rentiki"
+        ]
+      }
+    }
+  }
+}

@@ -2,6 +2,7 @@ import { HousesService } from './../houses.service';
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { switchMap } from 'rxjs/operators';
 
 function base64toBlob(base64Data, contentType) {
   contentType = contentType || '';
@@ -35,6 +36,7 @@ export class NewHousePage implements OnInit {
   form: FormGroup;
   radioGroupValue: string = 'sell';
   whatsappNum: number;
+  images = [];
 
   constructor(private housesService: HousesService, private router: Router) {}
 
@@ -66,7 +68,7 @@ export class NewHousePage implements OnInit {
       }),
       whatsapp: new FormControl(null, {
         updateOn: 'blur',
-      }),
+      })
     });
   }
 
@@ -95,27 +97,34 @@ export class NewHousePage implements OnInit {
     }
 
     return this.housesService
-      .addHouses(
-        this.form.value.contract,
-        this.form.value.title,
-        this.form.value.description,
-        this.form.value.price,
-        this.form.value.contact,
-        this.form.value.whatsapp,
-        this.form.value.location
-      )
-      .subscribe(() => {
-        this.form.reset();
-        this.router.navigateByUrl('/houses');
-      });
+      .uploadImages(this.images)
+      // .pipe(
+      //   switchMap(URLsArrayImages => {
+      //     return this.housesService.addHouses(
+      //         this.form.value.contract,
+      //         this.form.value.title,
+      //         this.form.value.description,
+      //         this.form.value.price,
+      //         this.form.value.contact,
+      //         this.form.value.whatsapp,
+      //         this.form.value.location,
+      //         //this.images  
+      //     )
+      //   })
+      // )    
+      // .subscribe(() => {
+      //   this.form.reset();
+      //   this.router.navigateByUrl('/houses');
+      // });
   }
 
-  onImagePicked(imageData: string | File) {
+  onImagePicked(imageData) {
+    //console.log(imageData[1])
     let imageFile;
-    if (typeof imageData === 'string') {
+    if (typeof imageData[1] === 'string') {
       try {
         imageFile = base64toBlob(
-          imageData.replace('data:image/jpeg;base64,', ''),
+          imageData[1].replace('data:image/jpeg;base64,', ''),
           'image/jpeg'
         );
       } catch (error) {
@@ -123,9 +132,12 @@ export class NewHousePage implements OnInit {
         return;
       }
     } else {
-      imageFile = imageData;
+      imageFile = imageData[1];
     }
-    this.form.patchValue({ image: imageFile });
+
+    //console.log(imageFile)
+    this.images.push(imageFile);
+    console.log(this.images)
   }
 
 }
