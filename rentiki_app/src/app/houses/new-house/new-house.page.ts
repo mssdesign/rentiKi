@@ -2,7 +2,7 @@ import { HousesService } from './../houses.service';
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import { switchMap } from 'rxjs/operators';
+import { switchMap, take, takeLast } from 'rxjs/operators';
 
 function base64toBlob(base64Data, contentType) {
   contentType = contentType || '';
@@ -37,6 +37,7 @@ export class NewHousePage implements OnInit {
   radioGroupValue: string = 'sell';
   whatsappNum: number;
   images = [];
+  imagesURL = [];
 
   constructor(private housesService: HousesService, private router: Router) {}
 
@@ -68,7 +69,7 @@ export class NewHousePage implements OnInit {
       }),
       whatsapp: new FormControl(null, {
         updateOn: 'blur',
-      })
+      }),
     });
   }
 
@@ -96,30 +97,51 @@ export class NewHousePage implements OnInit {
       return;
     }
 
-    return this.housesService
-      .uploadImages(this.images)
-      // .pipe(
-      //   switchMap(URLsArrayImages => {
-      //     return this.housesService.addHouses(
-      //         this.form.value.contract,
-      //         this.form.value.title,
-      //         this.form.value.description,
-      //         this.form.value.price,
-      //         this.form.value.contact,
-      //         this.form.value.whatsapp,
-      //         this.form.value.location,
-      //         //this.images  
-      //     )
-      //   })
-      // )    
-      // .subscribe(() => {
-      //   this.form.reset();
-      //   this.router.navigateByUrl('/houses');
-      // });
+    this.housesService.uploadImages(this.images);
+    this.housesService.images
+      .pipe(
+        takeLast(1),
+        switchMap(async (imageArray) => {
+          return this.housesService
+            .addHouses(
+              this.form.value.contract,
+              this.form.value.title,
+              this.form.value.description,
+              this.form.value.price,
+              this.form.value.contact,
+              this.form.value.whatsapp,
+              this.form.value.location,
+              await imageArray
+            ).subscribe();
+        })
+      )
+      .subscribe(() => {
+        this.form.reset();
+        this.router.navigateByUrl('/houses');
+      });
   }
 
+  // onCreateOffer() {
+  //   if (!this.form.valid) {
+  //     return;
+  //   }
+
+  //   return this.housesService.addHouses(
+  //             this.form.value.contract,
+  //             this.form.value.title,
+  //             this.form.value.description,
+  //             this.form.value.price,
+  //             this.form.value.contact,
+  //             this.form.value.whatsapp,
+  //             this.form.value.location
+  //         )
+  //     .subscribe(() => {
+  //       this.form.reset();
+  //       this.router.navigateByUrl('/houses');
+  //     });
+  // }
+
   onImagePicked(imageData) {
-    //console.log(imageData[1])
     let imageFile;
     if (typeof imageData[1] === 'string') {
       try {
@@ -135,9 +157,6 @@ export class NewHousePage implements OnInit {
       imageFile = imageData[1];
     }
 
-    //console.log(imageFile)
-    this.images.push(imageFile);
-    console.log(this.images)
+    this.images.push([imageData[0].name, imageFile]); //Enviando nome do arquivo e arquivo em blob
   }
-
 }

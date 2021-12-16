@@ -15,10 +15,10 @@ import { finalize } from 'rxjs/operators';
 export class HousesService {
   private _houses = new BehaviorSubject<offersModel[]>([]);
   private _userOffers = new BehaviorSubject<offersModel[]>([]);
+  private _images = new BehaviorSubject<any[]>([]);
   private _storage: Storage | null = null;
-  uploadPercent: Observable<number>;  //teste
-  downloadURL: Observable<string>;  //teste
-  profileUrl: Observable<string | null>;  //teste
+  uploadPercent: Observable<number>;
+  downloadURL: string[];
 
   constructor(
     private http: HttpClient,
@@ -29,7 +29,7 @@ export class HousesService {
     this.saveLocal(); //Executando função que cria base local de dados
   }
 
-  images = [
+  imagesArray = [
     //Apagar
     'https://media.gettyimages.com/photos/self-build-country-home-morning-mist-picture-id680520047?s=2048x2048',
     'https://imagens-revista.vivadecora.com.br/uploads/2021/03/1-decora%C3%A7%C3%A3o-moderna-para-quarto-feminino-pequeno-cinza-com-m%C3%B3veis-planejados-Foto-Sua-Decora%C3%A7%C3%A3o.jpg',
@@ -46,7 +46,33 @@ export class HousesService {
     return this._userOffers.asObservable();
   }
 
+  get images() {
+    return this._images.asObservable();
+  } 
+
   //Enviando anúncios para firebase
+  // addHouses(
+  //   contract: string,
+  //   title: string,
+  //   description: string,
+  //   price: string,
+  //   contact: string,
+  //   whatsapp: boolean,
+  //   location: string,
+  //   images: string[]
+  // ) {
+  //   console.log(
+  //     'enviando isso:' + contract,
+  //     title,
+  //     description,
+  //     price,
+  //     contact,
+  //     whatsapp,
+  //     location,
+  //     images
+  //   );
+  // }
+
   addHouses(
     contract: string,
     title: string,
@@ -55,7 +81,7 @@ export class HousesService {
     contact: string,
     whatsapp: boolean,
     location: string,
-    //images: string[],
+    images: string[],
   ) {
     let fetchedUserId: string;
     let newOffer: offersModel;
@@ -83,7 +109,7 @@ export class HousesService {
           contact,
           whatsapp,
           location,
-          this.images,
+          images,
           false
         );
 
@@ -128,7 +154,7 @@ export class HousesService {
               }
 
               const houses = [];
-              for (const offer in offersData) {        
+              for (const offer in offersData) {
                 houses.push(
                   new offersModel(
                     offersData[offer][1].userId,
@@ -187,41 +213,43 @@ export class HousesService {
     return this.authService.token.pipe(
       take(1),
       switchMap((token) => {
-        return this.http.get<any>(
-          `https://rentiki-default-rtdb.firebaseio.com/offers/${userId}.json?auth=${token}`
-        ).pipe(
-          take(1),
-          switchMap(async (offerData) => {
-            const userOffers = [];
-            for (const [offerId, data] of Object.entries(offerData)) {
-              userOffers.push([offerId, data])
-            }
+        return this.http
+          .get<any>(
+            `https://rentiki-default-rtdb.firebaseio.com/offers/${userId}.json?auth=${token}`
+          )
+          .pipe(
+            take(1),
+            switchMap(async (offerData) => {
+              const userOffers = [];
+              for (const [offerId, data] of Object.entries(offerData)) {
+                userOffers.push([offerId, data]);
+              }
 
-            const offers = [];
-            for (const offer in userOffers) {
-              offers.push(
-                new offersModel(
-                  userOffers[offer][1].userId,
-                  userOffers[offer][0],
-                  userOffers[offer][1].contract,
-                  userOffers[offer][1].title,
-                  userOffers[offer][1].description,
-                  userOffers[offer][1].price,
-                  userOffers[offer][1].contact,
-                  userOffers[offer][1].whatsapp,
-                  userOffers[offer][1].location,
-                  userOffers[offer][1].images,
-                  userOffers[offer][1].favorite
-                )
-              )
-            }
+              const offers = [];
+              for (const offer in userOffers) {
+                offers.push(
+                  new offersModel(
+                    userOffers[offer][1].userId,
+                    userOffers[offer][0],
+                    userOffers[offer][1].contract,
+                    userOffers[offer][1].title,
+                    userOffers[offer][1].description,
+                    userOffers[offer][1].price,
+                    userOffers[offer][1].contact,
+                    userOffers[offer][1].whatsapp,
+                    userOffers[offer][1].location,
+                    userOffers[offer][1].images,
+                    userOffers[offer][1].favorite
+                  )
+                );
+              }
 
-            return offers;
-          }),
-          tap(offers => {
-            this._userOffers.next(offers);
-          })
-        )
+              return offers;
+            }),
+            tap((offers) => {
+              this._userOffers.next(offers);
+            })
+          );
       })
     );
   }
@@ -239,8 +267,10 @@ export class HousesService {
         return this.userOffers;
       }),
       take(1),
-      tap(userOffers => {
-        this._userOffers.next(userOffers.filter(offer => offer.offerKey !== offerKey))
+      tap((userOffers) => {
+        this._userOffers.next(
+          userOffers.filter((offer) => offer.offerKey !== offerKey)
+        );
       })
     );
   }
@@ -252,7 +282,7 @@ export class HousesService {
       switchMap((token) => {
         return this.http.get<any>(
           `https://rentiki-default-rtdb.firebaseio.com/offers/${userId}/${offerKey}.json?auth=${token}`
-        )
+        );
       })
     );
   }
@@ -263,34 +293,154 @@ export class HousesService {
   //Foram adicionados arquivos no app.module e nesse service conforme a documentação nos links abaixo
   //https://github.com/angular/angularfire
   //https://github.com/angular/angularfire/blob/master/docs/storage/storage.md
-  async uploadImages(images: File[]) {    
-    //console.log(images)
-    //Fazer função para retornar array com urls ao invés de images
-    const imageArray = images;
-    console.log('executando')
-
-    const filePath = 'rentiki_app\src\assets\shapes.svg'; //Caminho da pasta no dispositivo
-
-    const fileRef = this.fireStorage.ref(filePath)
-
-    const task = this.fireStorage.upload(filePath, imageArray);
-
-    this.uploadPercent = task.percentageChanges();
-
-    const ref = this.fireStorage.ref(filePath)
-
-    task.snapshotChanges().pipe(
-      finalize(async () => this.downloadURL = await fileRef.getDownloadURL())
-    )
-    .subscribe(async () => {
-      console.log(await ref.getDownloadURL().subscribe(url => console.log(url)))
+  async uploadImages(images: File[]) {
+    console.log('executando');
+    let userId;
+    let fireUrl = [];
+    let filePath;
+    this.authService.userId.subscribe((data) => {
+      userId = data;
     });
 
+    for (let image = 0; image < images.length; image++) {
+      filePath = `/images/${userId}/${images[image][0]}`; //Caminho da pasta no firebase images[0][0] = nome do arquivo
+      const imageBlob = images[image][1]; //Arquivo em blob
+      const fileRef = this.fireStorage.ref(filePath); //Pegando referência do arquivo
 
-    //Já é possível enviar imagens e receber url com a estrutura acima
-    //? Como colocar várias imagens?
-    //? Onde está o caminho do arquivo?
-    //
+      this.fireStorage
+        .upload(filePath, imageBlob)
+        .snapshotChanges()
+        .pipe(
+          finalize(() => {
+            fileRef
+              .getDownloadURL()
+              .pipe(
+                take(1),
+                tap((data) => {
+                  console.log('link: ' + data);
+                  fireUrl.push(data);                 
+                  this._images.next(fireUrl);
+                  
+                  if (image + 1 === images.length) {
+                    setTimeout(() => {
+                      this._images.complete()
+                    }, 2000)
+                  }
+                })
+              )
+              .subscribe();
+          })
+        )
+        .subscribe();
+    }
+
   }
-  
+
+  // async uploadImages(images: File[]) {
+  //   let userId;
+  //   let fireUrl;
+  //   this.authService.userId.subscribe(data => {userId = data});
+
+  //   const filePath = `/images/${userId}/${images[0][0]}`; //Caminho da pasta no firebase images[0][0] = nome do arquivo
+  //   const imageArray = images[0][1] //Arquivo em blob
+
+  //   const task = this.fireStorage.upload(filePath, imageArray); //Faz o upload
+
+  //   const fileRef = this.fireStorage.fileRef(filePath)  //Pegando referência do arquivo
+
+  //   task.snapshotChanges().pipe(
+  //     finalize(() => fileRef.getDownloadURL())
+  //   )
+  //   .subscribe(() => {
+  //     fileRef.getDownloadURL().subscribe(url => {fireUrl = url})
+  //     console.log('url: ' + fireUrl)
+  //   });
+
+  // }
+
+  // async uploadImages(images: File[]) {
+  //   console.log('executando')
+  //   let userId;
+  //   let fireUrl = [];
+  //   let filePath;
+  //   this.authService.userId.subscribe(data => {userId = data});
+
+  //   for (let image in images) {
+  //     filePath = `/images/${userId}/${images[image][0]}`; //Caminho da pasta no firebase images[0][0] = nome do arquivo
+  //     const imageBlob = images[image][1]; //Arquivo em blob
+  //     const task = this.fireStorage.upload(filePath, imageBlob); //Faz o upload
+  //     const fileRef = this.fireStorage.fileRef(filePath)  //Pegando referência do arquivo
+
+  //     task.snapshotChanges().pipe(
+  //       finalize(() => fileRef.getDownloadURL())
+  //     )
+  //     .subscribe(() => {
+  //       fileRef.getDownloadURL().subscribe(url => {fireUrl = url})
+  //     });
+
+  //   }
+
+  //   return fireUrl;
+  // }
+
+  // async uploadImages(images: File[]) {
+  //   console.log('executando');
+  //   let userId;
+  //   let url;
+  //   let fireUrl = [];
+  //   let filePath;
+  //   this.authService.userId.subscribe((data) => {
+  //     userId = data;
+  //   });
+
+  //   for (let image in images) {
+  //     filePath = `/images/${userId}/${images[image][0]}`; //Caminho da pasta no firebase images[0][0] = nome do arquivo
+  //     const imageBlob = images[image][1]; //Arquivo em blob
+  //     const fileRef = this.fireStorage.ref(filePath); //Pegando referência do arquivo
+
+  //     this.fireStorage.upload(filePath, imageBlob).snapshotChanges().pipe(
+  //       finalize(() => {fileRef.getDownloadURL().subscribe(data => {url = data; console.log(url)})})
+  //     ).subscribe();
+
+  //     // setTimeout(() => {
+  //     //   console.log(url)
+  //     // }, 2000)
+  //   }
+  // }
+
+  // async uploadImages(images: File[]) {
+  //   console.log('executando');
+  //   let userId;
+  //   let url;
+  //   let fireUrl = [];
+  //   let filePath;
+  //   this.authService.userId.subscribe((data) => {
+  //     userId = data;
+  //   });
+
+  //   for (let image in images) {
+  //     filePath = `/images/${userId}/${images[image][0]}`; //Caminho da pasta no firebase images[0][0] = nome do arquivo
+  //     const imageBlob = images[image][1]; //Arquivo em blob
+  //     const fileRef = this.fireStorage.ref(filePath); //Pegando referência do arquivo
+
+  //     this.fireStorage
+  //       .upload(filePath, imageBlob)
+  //       .snapshotChanges()
+  //       .pipe(
+  //         finalize(() => {
+  //           fileRef
+  //             .getDownloadURL()
+  //             .pipe(
+  //               take(1),
+  //               tap((data) => {
+  //                 console.log('link: ' + data);
+  //               })
+  //             )
+  //             .subscribe();
+  //         })
+  //       )
+  //       .subscribe();
+  //   }
+
+  // }
 }
