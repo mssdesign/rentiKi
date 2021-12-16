@@ -17,8 +17,6 @@ export class HousesService {
   private _userOffers = new BehaviorSubject<offersModel[]>([]);
   private _images = new BehaviorSubject<any[]>([]);
   private _storage: Storage | null = null;
-  uploadPercent: Observable<number>;
-  downloadURL: string[];
 
   constructor(
     private http: HttpClient,
@@ -28,15 +26,6 @@ export class HousesService {
   ) {
     this.saveLocal(); //Executando função que cria base local de dados
   }
-
-  imagesArray = [
-    //Apagar
-    'https://media.gettyimages.com/photos/self-build-country-home-morning-mist-picture-id680520047?s=2048x2048',
-    'https://imagens-revista.vivadecora.com.br/uploads/2021/03/1-decora%C3%A7%C3%A3o-moderna-para-quarto-feminino-pequeno-cinza-com-m%C3%B3veis-planejados-Foto-Sua-Decora%C3%A7%C3%A3o.jpg',
-    'https://www.italinea.com.br/antigo/wp-content/uploads/2019/12/face_2801-internas_3.png',
-    'https://revistanews.com.br/wp-content/uploads/2018/08/quarto-infantil.jpg',
-    'https://www.plantapronta.com.br/projetos/154/21.jpg',
-  ];
 
   get houses() {
     return this._houses.asObservable();
@@ -48,30 +37,7 @@ export class HousesService {
 
   get images() {
     return this._images.asObservable();
-  } 
-
-  //Enviando anúncios para firebase
-  // addHouses(
-  //   contract: string,
-  //   title: string,
-  //   description: string,
-  //   price: string,
-  //   contact: string,
-  //   whatsapp: boolean,
-  //   location: string,
-  //   images: string[]
-  // ) {
-  //   console.log(
-  //     'enviando isso:' + contract,
-  //     title,
-  //     description,
-  //     price,
-  //     contact,
-  //     whatsapp,
-  //     location,
-  //     images
-  //   );
-  // }
+  }
 
   addHouses(
     contract: string,
@@ -81,7 +47,7 @@ export class HousesService {
     contact: string,
     whatsapp: boolean,
     location: string,
-    images: string[],
+    images: string[]
   ) {
     let fetchedUserId: string;
     let newOffer: offersModel;
@@ -294,7 +260,6 @@ export class HousesService {
   //https://github.com/angular/angularfire
   //https://github.com/angular/angularfire/blob/master/docs/storage/storage.md
   async uploadImages(images: File[]) {
-    console.log('executando');
     let userId;
     let fireUrl = [];
     let filePath;
@@ -317,14 +282,13 @@ export class HousesService {
               .pipe(
                 take(1),
                 tap((data) => {
-                  console.log('link: ' + data);
-                  fireUrl.push(data);                 
+                  fireUrl.push(data);
                   this._images.next(fireUrl);
-                  
+
                   if (image + 1 === images.length) {
                     setTimeout(() => {
-                      this._images.complete()
-                    }, 2000)
+                      this._images.complete();
+                    }, 2000);
                   }
                 })
               )
@@ -333,114 +297,5 @@ export class HousesService {
         )
         .subscribe();
     }
-
   }
-
-  // async uploadImages(images: File[]) {
-  //   let userId;
-  //   let fireUrl;
-  //   this.authService.userId.subscribe(data => {userId = data});
-
-  //   const filePath = `/images/${userId}/${images[0][0]}`; //Caminho da pasta no firebase images[0][0] = nome do arquivo
-  //   const imageArray = images[0][1] //Arquivo em blob
-
-  //   const task = this.fireStorage.upload(filePath, imageArray); //Faz o upload
-
-  //   const fileRef = this.fireStorage.fileRef(filePath)  //Pegando referência do arquivo
-
-  //   task.snapshotChanges().pipe(
-  //     finalize(() => fileRef.getDownloadURL())
-  //   )
-  //   .subscribe(() => {
-  //     fileRef.getDownloadURL().subscribe(url => {fireUrl = url})
-  //     console.log('url: ' + fireUrl)
-  //   });
-
-  // }
-
-  // async uploadImages(images: File[]) {
-  //   console.log('executando')
-  //   let userId;
-  //   let fireUrl = [];
-  //   let filePath;
-  //   this.authService.userId.subscribe(data => {userId = data});
-
-  //   for (let image in images) {
-  //     filePath = `/images/${userId}/${images[image][0]}`; //Caminho da pasta no firebase images[0][0] = nome do arquivo
-  //     const imageBlob = images[image][1]; //Arquivo em blob
-  //     const task = this.fireStorage.upload(filePath, imageBlob); //Faz o upload
-  //     const fileRef = this.fireStorage.fileRef(filePath)  //Pegando referência do arquivo
-
-  //     task.snapshotChanges().pipe(
-  //       finalize(() => fileRef.getDownloadURL())
-  //     )
-  //     .subscribe(() => {
-  //       fileRef.getDownloadURL().subscribe(url => {fireUrl = url})
-  //     });
-
-  //   }
-
-  //   return fireUrl;
-  // }
-
-  // async uploadImages(images: File[]) {
-  //   console.log('executando');
-  //   let userId;
-  //   let url;
-  //   let fireUrl = [];
-  //   let filePath;
-  //   this.authService.userId.subscribe((data) => {
-  //     userId = data;
-  //   });
-
-  //   for (let image in images) {
-  //     filePath = `/images/${userId}/${images[image][0]}`; //Caminho da pasta no firebase images[0][0] = nome do arquivo
-  //     const imageBlob = images[image][1]; //Arquivo em blob
-  //     const fileRef = this.fireStorage.ref(filePath); //Pegando referência do arquivo
-
-  //     this.fireStorage.upload(filePath, imageBlob).snapshotChanges().pipe(
-  //       finalize(() => {fileRef.getDownloadURL().subscribe(data => {url = data; console.log(url)})})
-  //     ).subscribe();
-
-  //     // setTimeout(() => {
-  //     //   console.log(url)
-  //     // }, 2000)
-  //   }
-  // }
-
-  // async uploadImages(images: File[]) {
-  //   console.log('executando');
-  //   let userId;
-  //   let url;
-  //   let fireUrl = [];
-  //   let filePath;
-  //   this.authService.userId.subscribe((data) => {
-  //     userId = data;
-  //   });
-
-  //   for (let image in images) {
-  //     filePath = `/images/${userId}/${images[image][0]}`; //Caminho da pasta no firebase images[0][0] = nome do arquivo
-  //     const imageBlob = images[image][1]; //Arquivo em blob
-  //     const fileRef = this.fireStorage.ref(filePath); //Pegando referência do arquivo
-
-  //     this.fireStorage
-  //       .upload(filePath, imageBlob)
-  //       .snapshotChanges()
-  //       .pipe(
-  //         finalize(() => {
-  //           fileRef
-  //             .getDownloadURL()
-  //             .pipe(
-  //               take(1),
-  //               tap((data) => {
-  //                 console.log('link: ' + data);
-  //               })
-  //             )
-  //             .subscribe();
-  //         })
-  //       )
-  //       .subscribe();
-  //   }
-
-  // }
 }

@@ -2,7 +2,6 @@ import { HousesService } from './../houses.service';
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Subscription } from 'rxjs';
-import { offersModel } from '../offers.model';
 import { LoadingController, NavController } from '@ionic/angular';
 
 @Component({
@@ -27,7 +26,7 @@ export class HousePage implements OnInit, OnDestroy {
   ) {}
 
   ngOnInit() {
-    this.route.paramMap.subscribe((paramMap) => {
+    this.offerSub = this.route.paramMap.subscribe((paramMap) => {
       if (!paramMap.has('userOfferId') || !paramMap.has('offerKey')) {
         this.navCtrl.navigateBack('/houses');
         return;
@@ -55,11 +54,9 @@ export class HousePage implements OnInit, OnDestroy {
     this.telNum = number;
   }
 
-  callZap(number: string) {
-    //console.log(number)
-  }
-
   ngOnDestroy() {
-    //Arrumar isso aqui também
+    if (this.offerSub) {
+      this.offerSub.unsubscribe();
+    }
   }
 }

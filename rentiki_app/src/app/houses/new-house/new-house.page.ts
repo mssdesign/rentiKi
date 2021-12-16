@@ -2,7 +2,7 @@ import { HousesService } from './../houses.service';
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import { switchMap, take, takeLast } from 'rxjs/operators';
+import { switchMap, takeLast } from 'rxjs/operators';
 
 function base64toBlob(base64Data, contentType) {
   contentType = contentType || '';
@@ -37,7 +37,6 @@ export class NewHousePage implements OnInit {
   radioGroupValue: string = 'sell';
   whatsappNum: number;
   images = [];
-  imagesURL = [];
 
   constructor(private housesService: HousesService, private router: Router) {}
 
@@ -112,7 +111,8 @@ export class NewHousePage implements OnInit {
               this.form.value.whatsapp,
               this.form.value.location,
               await imageArray
-            ).subscribe();
+            )
+            .subscribe();
         })
       )
       .subscribe(() => {
@@ -120,26 +120,6 @@ export class NewHousePage implements OnInit {
         this.router.navigateByUrl('/houses');
       });
   }
-
-  // onCreateOffer() {
-  //   if (!this.form.valid) {
-  //     return;
-  //   }
-
-  //   return this.housesService.addHouses(
-  //             this.form.value.contract,
-  //             this.form.value.title,
-  //             this.form.value.description,
-  //             this.form.value.price,
-  //             this.form.value.contact,
-  //             this.form.value.whatsapp,
-  //             this.form.value.location
-  //         )
-  //     .subscribe(() => {
-  //       this.form.reset();
-  //       this.router.navigateByUrl('/houses');
-  //     });
-  // }
 
   onImagePicked(imageData) {
     let imageFile;
