@@ -98,7 +98,7 @@ export class NewHousePage implements OnInit {
     }
 
     this.loadingCtrl
-      .create({ message: 'Carregando...' })
+      .create({ message: 'Carregando...', duration: 15000 })
       .then((loadingEl) => {
         loadingEl.present();
         this.housesService.uploadImages(this.images);
@@ -123,8 +123,12 @@ export class NewHousePage implements OnInit {
           .subscribe(() => {
             loadingEl.dismiss();
             this.form.reset();
+            this.images = [];
             this.router.navigateByUrl('/houses');
           });
+      })
+      .catch((error) => {
+        console.log(error)
       })
   }
 
