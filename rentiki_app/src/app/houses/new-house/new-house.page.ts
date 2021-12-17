@@ -1,3 +1,4 @@
+import { LoadingController } from '@ionic/angular';
 import { HousesService } from './../houses.service';
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
@@ -38,7 +39,7 @@ export class NewHousePage implements OnInit {
   whatsappNum: number;
   images = [];
 
-  constructor(private housesService: HousesService, private router: Router) {}
+  constructor(private housesService: HousesService, private router: Router, private loadingCtrl: LoadingController) {}
 
   ngOnInit() {
     this.form = new FormGroup({
@@ -96,29 +97,35 @@ export class NewHousePage implements OnInit {
       return;
     }
 
-    this.housesService.uploadImages(this.images);
-    this.housesService.images
-      .pipe(
-        takeLast(1),
-        switchMap(async (imageArray) => {
-          return this.housesService
-            .addHouses(
-              this.form.value.contract,
-              this.form.value.title,
-              this.form.value.description,
-              this.form.value.price,
-              this.form.value.contact,
-              this.form.value.whatsapp,
-              this.form.value.location,
-              await imageArray
-            )
-            .subscribe();
-        })
-      )
-      .subscribe(() => {
-        this.form.reset();
-        this.router.navigateByUrl('/houses');
-      });
+    this.loadingCtrl
+      .create({ message: 'Carregando...' })
+      .then((loadingEl) => {
+        loadingEl.present();
+        this.housesService.uploadImages(this.images);
+        this.housesService.images
+          .pipe(
+            takeLast(1),
+            switchMap(async (imageArray) => {
+              return this.housesService
+                .addHouses(
+                  this.form.value.contract,
+                  this.form.value.title,
+                  this.form.value.description,
+                  this.form.value.price,
+                  this.form.value.contact,
+                  this.form.value.whatsapp,
+                  this.form.value.location,
+                  await imageArray
+                )
+                .subscribe();
+            })
+          )
+          .subscribe(() => {
+            loadingEl.dismiss();
+            this.form.reset();
+            this.router.navigateByUrl('/houses');
+          });
+      })
   }
 
   onImagePicked(imageData) {
