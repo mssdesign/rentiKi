@@ -49,7 +49,9 @@ export class ImagePickerComponent implements OnInit {
     })
       .then((image) => {
         this.selectedImage = image.dataUrl;
-        this.imagePick.emit(image.dataUrl);
+        let generatedName = Math.random().toString();
+        let name = {"name": `${generatedName}`}
+        this.imagePick.emit([name, this.selectedImage]);
         if (this.selectedImage) {
           this.showPreview = true;
         }
@@ -77,5 +79,4 @@ export class ImagePickerComponent implements OnInit {
     };
     fr.readAsDataURL(pickedFile);
   }
-  
 }

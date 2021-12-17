@@ -3,7 +3,7 @@ import { HousesService } from './../houses.service';
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import { switchMap, takeLast } from 'rxjs/operators';
+import { skip, switchMap, take, takeLast } from 'rxjs/operators';
 
 function base64toBlob(base64Data, contentType) {
   contentType = contentType || '';
@@ -39,7 +39,11 @@ export class NewHousePage implements OnInit {
   whatsappNum: number;
   images = [];
 
-  constructor(private housesService: HousesService, private router: Router, private loadingCtrl: LoadingController) {}
+  constructor(
+    private housesService: HousesService,
+    private router: Router,
+    private loadingCtrl: LoadingController
+  ) {}
 
   ngOnInit() {
     this.form = new FormGroup({
@@ -98,13 +102,14 @@ export class NewHousePage implements OnInit {
     }
 
     this.loadingCtrl
-      .create({ message: 'Carregando...', duration: 150000 })
+      .create({ message: 'Carregando...', duration: 20000 })
       .then((loadingEl) => {
         loadingEl.present();
         this.housesService.uploadImages(this.images);
         this.housesService.images
           .pipe(
-            takeLast(1),
+            skip(1),
+            take(1),
             switchMap(async (imageArray) => {
               return this.housesService
                 .addHouses(
@@ -115,7 +120,7 @@ export class NewHousePage implements OnInit {
                   this.form.value.contact,
                   this.form.value.whatsapp,
                   this.form.value.location,
-                  await imageArray
+                  imageArray
                 )
                 .subscribe();
             })

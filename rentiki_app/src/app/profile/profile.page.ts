@@ -10,7 +10,7 @@ import { Component, OnInit, OnDestroy } from '@angular/core';
   styleUrls: ['./profile.page.scss'],
 })
 export class ProfilePage implements OnInit, OnDestroy {
-  offersLoaded: offersModel[];
+  offersLoaded: offersModel[] = [];
   userOffersSub: Subscription;
 
   constructor(

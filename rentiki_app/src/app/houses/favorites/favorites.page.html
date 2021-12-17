@@ -9,6 +9,13 @@
 
 <ion-content>
   <ion-grid>
+
+    <ion-row *ngIf="!housesLoaded || housesLoaded.length == 0">
+      <ion-col>
+        <ion-label>Favorite os seus anúncios apertando no ❤️</ion-label>
+      </ion-col>
+    </ion-row>
+
     <ion-row>
       <ion-col>
         <ion-list *ngIf="!isLoading && housesLoaded && housesLoaded.length > 0">

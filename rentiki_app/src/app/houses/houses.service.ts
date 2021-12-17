@@ -1,5 +1,5 @@
 import { AuthService } from './../auth/auth.service';
-import { Injectable } from '@angular/core';
+import { Injectable, OnDestroy } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { offersModel } from './offers.model';
 import { switchMap, take, tap } from 'rxjs/operators';
@@ -11,11 +11,12 @@ import { finalize } from 'rxjs/operators';
 @Injectable({
   providedIn: 'root',
 })
-export class HousesService {
+export class HousesService implements OnDestroy {
   private _houses = new BehaviorSubject<offersModel[]>([]);
   private _userOffers = new BehaviorSubject<offersModel[]>([]);
   private _images = new BehaviorSubject<any[]>([]);
   private _storage: Storage | null = null;
+  timer: any;
 
   constructor(
     private http: HttpClient,
@@ -185,6 +186,11 @@ export class HousesService {
           .pipe(
             take(1),
             switchMap(async (offerData) => {
+
+              if (!offerData) {
+                return;
+              }
+
               const userOffers = [];
               for (const [offerId, data] of Object.entries(offerData)) {
                 userOffers.push([offerId, data]);
@@ -281,12 +287,11 @@ export class HousesService {
               .pipe(
                 take(1),
                 tap((data) => {
-                  fireUrl.push(data);
-                  this._images.next(fireUrl);
+                  fireUrl.push(data);                  
 
                   if (image + 1 === images.length) {
-                    setTimeout(() => {
-                      this._images.complete();
+                    this.timer = setTimeout(() => {
+                      this._images.next(fireUrl);
                     }, 2000);
                   }
                 })
@@ -296,5 +301,12 @@ export class HousesService {
         )
         .subscribe();
     }
+
   }
+
+  ngOnDestroy(): void {
+      clearTimeout(this.timer);
+      this._images.unsubscribe();
+  }
+
 }
