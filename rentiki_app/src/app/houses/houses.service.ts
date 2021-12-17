@@ -2,10 +2,9 @@ import { AuthService } from './../auth/auth.service';
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { offersModel } from './offers.model';
-import { catchError, map, switchMap, take, tap } from 'rxjs/operators';
-import { BehaviorSubject, Observable } from 'rxjs';
+import { switchMap, take, tap } from 'rxjs/operators';
+import { BehaviorSubject } from 'rxjs';
 import { Storage } from '@ionic/storage-angular';
-import { Component } from '@angular/core';
 import { AngularFireStorage } from '@angular/fire/compat/storage';
 import { finalize } from 'rxjs/operators';
 

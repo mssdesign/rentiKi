@@ -14,6 +14,7 @@ export class HousesPage implements OnInit, OnDestroy {
   housesRent: offersModel[];
   housesSell: offersModel[];
   private housesSub: Subscription;
+  isLoading = false;
 
   constructor(private housesService: HousesService) {}
 
@@ -25,7 +26,12 @@ export class HousesPage implements OnInit, OnDestroy {
   }
 
   ionViewWillEnter() {
-    this.housesService.fetchHouses().subscribe();
+    this.isLoading = true;
+    setTimeout(() => {
+      this.housesService.fetchHouses().subscribe(() => {
+        this.isLoading = false;
+      });
+    }, 1500);
   }
 
   filterRent() {

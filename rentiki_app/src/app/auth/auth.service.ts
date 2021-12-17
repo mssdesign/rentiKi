@@ -3,7 +3,7 @@ import { environment } from './../../environments/environment';
 import { userModel } from './users.model';
 import { HttpClient } from '@angular/common/http';
 import { Injectable, OnDestroy } from '@angular/core';
-import { take, map, tap } from 'rxjs/operators';
+import { map, tap } from 'rxjs/operators';
 import { BehaviorSubject, from } from 'rxjs';
 import { Storage } from '@capacitor/storage';
 
@@ -23,7 +23,6 @@ export class AuthService implements OnDestroy {
   private _users = new BehaviorSubject<userModel[]>([]);
   private _user = new BehaviorSubject<UserDataModel>(null);
   activeLogoutTimer: any;
-  dataUrl = 'http://localhost:3001/users'; //Apagar
 
   constructor(private httpClt: HttpClient) {}
 
@@ -98,29 +97,6 @@ export class AuthService implements OnDestroy {
         req
       )
       .pipe(tap(this.setUserData.bind(this)));
-  }
-
-  //Pegando usuários do banco
-  fetchUsers() {
-    return this.httpClt.get<any>(this.dataUrl).pipe(
-      take(1),
-      map(async (usersData) => {
-        const users = [];
-        for (const user in usersData) {
-          users.push(
-            new userModel(
-              usersData[user].name,
-              usersData[user].email,
-              usersData[user].userId
-            )
-          );
-        }
-        return users;
-      }),
-      tap(async (users) => {
-        this._users.next(await users);
-      })
-    );
   }
 
   //Saindo

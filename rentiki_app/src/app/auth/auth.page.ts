@@ -3,7 +3,7 @@ import { AuthService, AuthResponseData } from './auth.service';
 import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { Router } from '@angular/router';
-import { AlertController } from '@ionic/angular';
+import { AlertController, LoadingController } from '@ionic/angular';
 
 @Component({
   selector: 'app-auth',
@@ -17,33 +17,43 @@ export class AuthPage implements OnInit {
   constructor(
     private auth: AuthService,
     private router: Router,
-    private alertCtrl: AlertController
+    private alertCtrl: AlertController,
+    private loadingCtrl: LoadingController
   ) {}
 
   ngOnInit() {}
 
   authenticate(email: string, password: string) {
-    let authObservable: Observable<AuthResponseData>;
+    this.isLoading = true;
+    this.loadingCtrl
+      .create({ keyboardClose: true, message: 'Fazendo Login...' })
+      .then((loadingEl) => {
+        loadingEl.present();
 
-    if (this.isLogin) {
-      //Login
-      authObservable = this.auth.signInUser(email, password);
-      this.router.navigateByUrl('/houses');
-    } else {
-      //Cadastro
-      authObservable = this.auth.signUpUser(email, password);
-    }
+        let authObservable: Observable<AuthResponseData>;
 
-    authObservable.subscribe(
-      (resData) => {
-        this.router.navigateByUrl('/houses')
-      },
-      (error) => {
-        this.showAlert(error.error.error.message);
-        return this.router.navigateByUrl('/auth');
-      }
-    )
+        if (this.isLogin) {
+          //Login
+          authObservable = this.auth.signInUser(email, password);
+          this.router.navigateByUrl('/houses');
+        } else {
+          //Cadastro
+          authObservable = this.auth.signUpUser(email, password);
+        }
 
+        authObservable.subscribe(
+          (resData) => {
+            this.isLoading = false;
+            loadingEl.dismiss();
+            this.router.navigateByUrl('/houses');
+          },
+          (error) => {
+            loadingEl.dismiss();
+            this.showAlert(error.error.error.message);
+            return this.router.navigateByUrl('/auth');
+          }
+        );
+      });
   }
 
   //Envia o formulário
