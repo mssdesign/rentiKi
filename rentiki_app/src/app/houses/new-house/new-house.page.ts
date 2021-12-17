@@ -98,7 +98,7 @@ export class NewHousePage implements OnInit {
     }
 
     this.loadingCtrl
-      .create({ message: 'Carregando...', duration: 15000 })
+      .create({ message: 'Carregando...', duration: 150000 })
       .then((loadingEl) => {
         loadingEl.present();
         this.housesService.uploadImages(this.images);

@@ -16,7 +16,7 @@ export class FavoritesPage implements OnInit, OnDestroy {
   constructor(private housesService: HousesService) {}
 
   ngOnInit() {
-    this.housesFavSub = this.housesService.houses.subscribe((houses) => {
+    this.housesService.houses.subscribe((houses) => {
       this.housesLoaded = houses.filter(offerHouse => {
         if (offerHouse.favorite === true) {
           return true;

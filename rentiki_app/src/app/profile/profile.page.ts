@@ -19,7 +19,7 @@ export class ProfilePage implements OnInit, OnDestroy {
   ) {}
 
   ngOnInit() {
-    this.userOffersSub = this.auth.userId.subscribe((userId) => {
+    this.auth.userId.subscribe((userId) => {
       this.housesService.getMyOffers(userId).subscribe();
       this.housesService.userOffers.subscribe((data) => {
         this.offersLoaded = data;
