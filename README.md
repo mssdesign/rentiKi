@@ -1,5 +1,5 @@
 # rentiKi
-### Meu primeiro aplicativo totalmente desenvolvido por mim utilizando Angular + Ionic.
+### Meu primeiro aplicativo totalmente desenvolvido por mim utilizando Angular + Ionic + Firebase.
 
 <img src="https://github.com/mssdesign/portifolios/blob/main/portifolio_vs1/src/Assets/Mockups/Rentiki/Screenshot_20220119-193740_rentiki_app.jpg?raw=true" width="130" height="280">
 
