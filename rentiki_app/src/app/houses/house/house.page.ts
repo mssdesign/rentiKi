@@ -54,6 +54,10 @@ export class HousePage implements OnInit, OnDestroy {
     this.telNum = number;
   }
 
+  callZap(phone: string) {
+    console.log(phone)
+  }
+
   ngOnDestroy() {
     if (this.offerSub) {
       this.offerSub.unsubscribe();
